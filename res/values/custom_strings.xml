@@ -40,4 +40,7 @@
    <string name="screenshot_sound_title">Screenshot sound</string>
    <string name="screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
 
+   <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
+   <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>
