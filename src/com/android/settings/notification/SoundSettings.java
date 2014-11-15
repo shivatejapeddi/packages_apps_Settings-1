@@ -45,6 +45,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.TwoStatePreference;
@@ -70,7 +71,7 @@ import java.util.Objects;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
-public class SoundSettings extends SettingsPreferenceFragment implements Indexable {
+public class SoundSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
     private static final String TAG = "SoundSettings";
 
     private static final String KEY_MEDIA_VOLUME = "media_volume";
@@ -83,6 +84,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
+    private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
     private static final int REQUEST_CODE = 200;
@@ -116,6 +118,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private ComponentName mSuppressor;
     private int mRingerMode = -1;
 
+    private ListPreference mAnnoyingNotifications;
+
     private PackageManager mPm;
     private UserManager mUserManager;
     private RingtonePreference mRequestPreference;
@@ -140,6 +144,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
 
         addPreferencesFromResource(R.xml.sound_settings);
+
+        mAnnoyingNotifications = (ListPreference) findPreference(KEY_LESS_NOTIFICATION_SOUNDS);
+        int notificationThreshold = Settings.System.getInt(getContentResolver(),
+                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
+                0);
+        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
+        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
 
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
@@ -634,6 +645,16 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             return new SummaryProvider(activity, summaryLoader);
         }
     };
+
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        if (KEY_LESS_NOTIFICATION_SOUNDS.equals(key)) {
+            final int val = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
+        }
+        return true;
+    }
 
     // === Indexing ===
 
