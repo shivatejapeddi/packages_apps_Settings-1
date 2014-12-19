@@ -2527,6 +2527,18 @@
                        android:resource="@id/wireless_settings" />
         </activity>
 
+
+        <activity android:name="Settings$CitrusSettingsActivity"
+            android:label="@string/custom_title"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.CitrusSettings" />
+        </activity>
+
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
             android:authorities="com.android.settings"

@@ -126,6 +126,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.ButtonSettings;
+import com.citrus.settings.CitrusSettings;
 import com.citrus.settings.fragments.FlingSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.tabs.NavigationSettings;
@@ -287,7 +288,8 @@ public class SettingsActivity extends Activity
             R.id.print_settings,
             R.id.nfc_payment_settings,
             R.id.home_settings,
-            R.id.dashboard
+            R.id.dashboard,
+            R.id.custom_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -366,6 +368,7 @@ public class SettingsActivity extends Activity
             NavigationSettings.class.getName()
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName()
+            CitrusSettings.class.getName(),
     };
 
 
