@@ -105,6 +105,7 @@
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion!</string>
 
+<<<<<<< HEAD
     <!-- Title of dialog to force change [CHAR LIMIT=25] -->
     <string name="force_change">Force change</string>
     <!-- Title of dialog to force change storage [CHAR LIMIT=25] -->
@@ -117,4 +118,8 @@
 
     <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
     <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+
+    <!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Link ring and notification volumes</string>
+    <string name="notification_volume_option_title">Notification volume</string>
 </resources>
