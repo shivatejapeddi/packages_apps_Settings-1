@@ -48,12 +48,11 @@ public class SimSelectNotification extends BroadcastReceiver {
         final SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
         final int numSlots = telephonyManager.getSimCount();
 
-        // Do not create notifications on single SIM devices or when provisioning i.e. Setup Wizard.
+        // Do not create notifications on single SIM devices or when provisiong i.e. Setup Wizard
         // or User selection of fallback user preference is disabled.
         if (numSlots < 2 || !Utils.isDeviceProvisioned(context) ||
                 !SystemProperties.getBoolean("persist.radio.aosp_usr_pref_sel", false)) {
-            Log.d(TAG, " no of slots " + numSlots +
-                    " provision = " + Utils.isDeviceProvisioned(context));
+            Log.d(TAG, " no of slots " + numSlots + " provision = " + !Utils.isDeviceProvisioned(context));
             return;
         }
 
