@@ -140,4 +140,7 @@
 \n\nDon\u2019t remove the <xliff:g id="name" example="SD card">^2</xliff:g> during the move.<xliff:g id="forcetext">^3</xliff:g>
 </string>
 
+    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
+    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+
 </resources>
