@@ -596,7 +596,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     mSubscriptionManager.getActiveSubscriptionInfoList();
             if (subInfoLists != null) {
                 for (SubscriptionInfo subInfo : subInfoLists) {
-                    if (getProvisionStatus(mSir.getSimSlotIndex())
+                    if (getProvisionStatus(subInfo.getSimSlotIndex())
                             == PROVISIONED) activeSubInfoCount++;
                 }
             }
