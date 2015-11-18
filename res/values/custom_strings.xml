@@ -52,4 +52,7 @@
 
     <!-- Screenshot shutter sound -->
     <string name="screenshot_shutter_sound_title">Screenshot shutter sound</string>
+
+    <!-- Unlink notification volume -->
+    <string name="link_volume_option_title">Link ring and notification volume</string>
 </resources>
