@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 Cardinal-AOSP Project
+<!-- Copyright (C) 2016 Citrus-CAF Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -17,5 +17,8 @@
 
     <!-- RAM: Memory Info -->
     <string name="mem_info">RAM</string>
- 
+
+    <!-- About phone screen, Cardinal-AOSP device maintainer name -->
+    <string name="device_maintainer">Device maintainer</string>
+    <string name="device_maintainers">Device maintainers</string>
 </resources>

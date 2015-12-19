@@ -92,9 +92,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_UBER_AND = "ro.uber.android";
     private static final String PROPERTY_UBER_KERNEL = "ro.uber.kernel";
     private static final String PROPERTY_UBER_FLAGS = "ro.uber.flags";
+
     private static final String KEY_UBER_AND = "uber_android";
     private static final String KEY_UBER_KERNEL = "uber_kernel";
     private static final String KEY_UBER_FLAGS = "uber_flags";
+
+    private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     private static boolean mHideVersionName = false;
@@ -149,6 +152,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_UBER_AND, PROPERTY_UBER_AND);
         setValueSummary(KEY_UBER_KERNEL,  PROPERTY_UBER_KERNEL);
         setValueSummary(KEY_UBER_FLAGS, PROPERTY_UBER_FLAGS);
+
+        setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.citrus.maintainer");
 
         // Remove QGP Version if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
@@ -376,6 +381,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             findPreference(preference).setSummary(
                     SystemProperties.get(property,
                             getResources().getString(R.string.device_info_default)));
+        } catch (RuntimeException e) {
+            // No recovery
+        }
+    }
+
+    private void setMaintainerSummary(String preference, String property) {
+        try {
+            String maintainers = SystemProperties.get(property,
+                    getResources().getString(R.string.device_info_default));
+            findPreference(preference).setSummary(maintainers);
+            if (maintainers.contains(",")) {
+                findPreference(preference).setTitle(
+                        getResources().getString(R.string.device_maintainers));
+            }
         } catch (RuntimeException e) {
             // No recovery
         }
