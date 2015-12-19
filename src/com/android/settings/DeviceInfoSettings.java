@@ -76,7 +76,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
-    private static final String KEY_CITRUS_VERSION = "citrus_version"; 
+    private static final String KEY_CITRUS_VERSION = "citrus_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
@@ -89,6 +89,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String KEY_ABOUTCITRUS = "aboutcitrus";
     private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
+    private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
+
     long[] mHits = new long[3];
 
     private PreferenceScreen mCitrusAbout;
@@ -138,6 +140,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         setValueSummary(KEY_CITRUS_VERSION, "ro.citrus.version");
         findPreference(KEY_CITRUS_VERSION).setEnabled(true);
+
+        setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.citrus.maintainer");
 
         // Remove QGP Version if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
@@ -306,6 +310,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             findPreference(preference).setSummary(
                     SystemProperties.get(property,
                             getResources().getString(R.string.device_info_default)));
+        } catch (RuntimeException e) {
+            // No recovery
+        }
+    }
+
+    private void setMaintainerSummary(String preference, String property) {
+        try {
+            String maintainers = SystemProperties.get(property,
+                    getResources().getString(R.string.device_info_default));
+            findPreference(preference).setSummary(maintainers);
+            if (maintainers.contains(",")) {
+                findPreference(preference).setTitle(
+                        getResources().getString(R.string.device_maintainers));
+            }
         } catch (RuntimeException e) {
             // No recovery
         }
