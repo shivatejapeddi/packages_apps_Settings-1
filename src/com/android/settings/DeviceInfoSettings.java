@@ -86,6 +86,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
+    private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
 
     long[] mHits = new long[3];
 
@@ -133,6 +134,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         setValueSummary(KEY_CITRUS_VERSION, "ro.citrus.version");
         findPreference(KEY_CITRUS_VERSION).setEnabled(true);
+        setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.citrus.maintainer");
+
         // Remove QGP Version if property is not present
         //removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
         //        PROPERTY_QGP_VERSION);
@@ -348,6 +351,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             findPreference(preference).setSummary(
                     SystemProperties.get(property,
                             getResources().getString(R.string.device_info_default)));
+        } catch (RuntimeException e) {
+            // No recovery
+        }
+    }
+
+    private void setMaintainerSummary(String preference, String property) {
+        try {
+            String maintainers = SystemProperties.get(property,
+                    getResources().getString(R.string.device_info_default));
+            findPreference(preference).setSummary(maintainers);
+            if (maintainers.contains(",")) {
+                findPreference(preference).setTitle(
+                        getResources().getString(R.string.device_maintainers));
+            }
         } catch (RuntimeException e) {
             // No recovery
         }
