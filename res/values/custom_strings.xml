@@ -135,4 +135,8 @@
     <string name="citrus_version">Citrus-CAF Version</string>
     <string name="citrus_version_default">Unknown</string>
 
+    <!-- About phone screen, Cardinal-AOSP device maintainer name -->
+    <string name="device_maintainer">Device maintainer</string>
+    <string name="device_maintainers">Device maintainers</string>
+
 </resources>
