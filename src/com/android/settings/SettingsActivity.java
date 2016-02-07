@@ -126,6 +126,8 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.ButtonSettings;
+import com.citrus.settings.fragments.FlingSettings;
+import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.tabs.NavigationSettings;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -362,6 +364,8 @@ public class SettingsActivity extends Activity
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
             NavigationSettings.class.getName()
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName()
     };
 
 
