@@ -77,6 +77,16 @@
                 android:title="@string/firmware_version"
                 android:summary="@string/summary_placeholder"/>
 
+        <!-- Citrus-CAF  version -->
+        <Preference android:key="citrus_version"
+                android:title="@string/citrus_version"
+                android:summary="@string/device_info_default" />
+
+        <!-- CAF revision -->
+        <Preference android:key="caf_revision"
+                android:title="@string/caf_revision"
+                android:summary="@string/device_info_default" />
+
         <!-- Security patch level -->
         <Preference android:key="security_patch"
                 android:title="@string/security_patch"
