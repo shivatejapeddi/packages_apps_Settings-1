@@ -30,4 +30,10 @@
     <string name="changelog_custom_title">Changelog</string>
     <string name="changelog_custom_error">Unable to load changelog</string>
 
+    <!--Citrus-CAF Version-->
+    <string name="citrus_version">Citrus-CAF Version</string>
+    
+    <!--CAF Revision-->
+    <string name="caf_revision">CAF Revision</string>
+
 </resources>
