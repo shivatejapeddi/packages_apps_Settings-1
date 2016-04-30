@@ -25,4 +25,8 @@
     <!--Citrus-CAF Version-->
     <string name="citrus_version">Citrus-CAF Version</string>
     <string name="citrus_version_default">Unknown</string>
+
+    <!-- Citrus-OTA -->
+    <string name="slimota_title">OTA</string>
+
 </resources>

@@ -100,6 +100,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
 
+    private static final String KEY_CITRUS_OTA = "slimota"; 
+
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     private static boolean mHideVersionName = false;
 
@@ -323,8 +325,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
-        }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
+        } else if (preference.getKey().equals(KEY_CITRUS_OTA)) {
+                   boolean supported = false;
+                   try {
+                       supported = (getPackageManager().getPackageInfo("com.citrus.citrusota", 0).versionCode > 0);
+                   } catch (PackageManager.NameNotFoundException e) {
+                }
+            }       
+        
+                return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     /**
@@ -572,6 +581,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                         R.bool.config_additional_system_update_setting_enable)) {
                     keys.add(KEY_UPDATE_SETTING);
                 }
+                    keys.add(KEY_CITRUS_OTA);
                 return keys;
             }
 
