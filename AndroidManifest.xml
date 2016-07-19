@@ -2671,7 +2671,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.citrus.settings.tabs.NavigationSettings" />
+                android:value="com.citrus.settings.fragments.NavbarSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/user_settings" />
         </activity>

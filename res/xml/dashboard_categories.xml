@@ -86,7 +86,7 @@
 
         <!-- Citrus Settings -->
         <dashboard-tile
-                android:id="@+id/citrus_settings"
+                android:id="@+id/custom_settings"
                 android:title="@string/custom_title"
                 android:fragment="com.citrus.settings.CitrusSettings"
                 android:icon="@drawable/ic_citrus_settings"

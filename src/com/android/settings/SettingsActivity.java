@@ -130,7 +130,7 @@ import com.android.settings.ButtonSettings;
 import com.citrus.settings.CitrusSettings;
 import com.citrus.settings.fragments.FlingSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
-import com.citrus.settings.tabs.NavigationSettings;
+import com.citrus.settings.fragments.NavbarSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -366,7 +366,7 @@ public class SettingsActivity extends Activity
             ProcessStatsSummary.class.getName(),
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
-            NavigationSettings.class.getName(),
+            NavbarSettings.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
             CitrusSettings.class.getName(),

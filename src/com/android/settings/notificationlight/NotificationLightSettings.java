@@ -46,7 +46,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.tipsy.PackageListAdapter;
 import com.android.settings.tipsy.PackageListAdapter.PackageItem;
-import com.android.settings.slim.SystemSettingSwitchPreference;
+import com.citrus.settings.preference.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
