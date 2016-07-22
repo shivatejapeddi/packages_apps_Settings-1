@@ -128,7 +128,9 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.ButtonSettings;
 import com.citrus.settings.CitrusSettings;
+import com.citrus.settings.fragments.ExpandedDesktop; 
 import com.citrus.settings.fragments.FlingSettings;
+import com.citrus.settings.fragments.QuickSettings; 
 import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.fragments.NavbarSettings;
 
@@ -371,6 +373,8 @@ public class SettingsActivity extends Activity
             SmartbarSettings.class.getName(),
             CitrusSettings.class.getName(),
             BatteryBarSettings.class.getName(),
+            ExpandedDesktop.class.getName(),
+            QuickSettings.class.getName(),
     };
 
 

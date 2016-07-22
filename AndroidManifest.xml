@@ -2545,7 +2545,6 @@
                        android:resource="@id/wireless_settings" />
         </activity>
 
-
         <activity android:name="Settings$CitrusSettingsActivity"
             android:label="@string/custom_title"
             android:taskAffinity="">
@@ -2555,6 +2554,34 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.citrus.settings.CitrusSettings" />
+        </activity>
+
+        <!-- Expanded desktop settings activity. -->
+        <activity android:name="Settings$ExpandedDesktopSettingsActivity"
+                android:label="@string/expanded_desktop_category"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.fragments.ExpandedDesktop" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/user_settings" />
+        </activity>
+
+        <!-- QuickSettings Fragment activity. -->
+        <activity android:name="Settings$QuickSettingsActivity"
+                android:label="@string/systemui_tuner_qs_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.fragments.QuickSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/user_settings" />
         </activity>
 
         <provider
