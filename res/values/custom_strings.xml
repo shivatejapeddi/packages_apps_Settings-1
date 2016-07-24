@@ -135,4 +135,8 @@
     <string name="aboutcitrus">About Citrus-CAF</string>
     <string name="aboutcitrus_summary">Get to know about us!</string>
 
+    <!--Citrus-CAF Version-->
+    <string name="citrus_version">Citrus-CAF Version</string>
+    <string name="citrus_version_default">Unknown</string>
+
 </resources>
