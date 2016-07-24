@@ -74,6 +74,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
+    private static final String KEY_CITRUS_VERSION = "citrus_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
@@ -130,6 +131,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
+        setValueSummary(KEY_CITRUS_VERSION, "ro.citrus.version");
+        findPreference(KEY_CITRUS_VERSION).setEnabled(true);
         // Remove QGP Version if property is not present
         //removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
         //        PROPERTY_QGP_VERSION);
