@@ -131,4 +131,8 @@
     <string name="vol_zen_title">Do not disturb switch</string>
     <string name="vol_zen_summary">Show do not disturb swith on volume panel</string>
 
+    <!--Citrus-CAF Version-->
+    <string name="citrus_version">Citrus-CAF Version</string>
+    <string name="citrus_version_default">Unknown</string>
+
 </resources>
