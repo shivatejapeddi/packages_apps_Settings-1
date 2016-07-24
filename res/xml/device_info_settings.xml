@@ -64,6 +64,12 @@
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
 
+        <!-- Citrus-CAF version -->
+        <Preference android:key="citrus_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/citrus_version"
+                android:summary="@string/citrus_version_default" />
+
         <!-- Security patch level -->
         <Preference android:key="security_patch"
                 android:enabled="false"
