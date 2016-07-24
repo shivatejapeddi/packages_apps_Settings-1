@@ -18,7 +18,11 @@
     <!-- RAM: Memory Info -->
     <string name="mem_info">RAM</string>
 
-    <!-- About phone screen, Cardinal-AOSP device maintainer name -->
+    <!-- About phone screen, Citrus-CAF device maintainer name -->
     <string name="device_maintainer">Device maintainer</string>
     <string name="device_maintainers">Device maintainers</string>
+
+    <!--Citrus-CAF Version-->
+    <string name="citrus_version">Citrus-CAF Version</string>
+    <string name="citrus_version_default">Unknown</string>
 </resources>
