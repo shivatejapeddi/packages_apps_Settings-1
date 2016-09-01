@@ -96,6 +96,26 @@
                 android:title="@string/tap_to_wake"
                 android:summary="@string/tap_to_wake_summary" />
 
+        <DropDownPreference
+                android:key="auto_rotate"
+                android:summary="%s"
+                android:title="@string/display_auto_rotate_title" />
+
+        <PreferenceScreen
+                android:key="wifi_display"
+                android:title="@string/wifi_display_settings_title"
+                settings:keywords="@string/keywords_display_cast_screen"
+                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
+        <DropDownPreference
+                android:key="vr_display_pref"
+                android:summary="%s"
+                android:title="@string/display_vr_pref_title" />
+
+        <PreferenceCategory
+                android:key="density_category"
+                android:title="@string/density_category">
+
         <com.android.settings.WarnedPreference
                 android:key="font_size_mode"
                 android:title="@string/title_font_size"
@@ -113,20 +133,10 @@
                 android:title="@string/screen_zoom_title"
                 settings:keywords="@string/screen_zoom_keywords" />
 
-        <DropDownPreference
-                android:key="auto_rotate"
-                android:summary="%s"
-                android:title="@string/display_auto_rotate_title" />
+        <com.android.settings.display.DensityPreference
+                android:key="density"
+                android:title="@string/developer_smallest_width" />
 
-        <PreferenceScreen
-                android:key="wifi_display"
-                android:title="@string/wifi_display_settings_title"
-                settings:keywords="@string/keywords_display_cast_screen"
-                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
-
-        <DropDownPreference
-                android:key="vr_display_pref"
-                android:summary="%s"
-                android:title="@string/display_vr_pref_title" />
+        </PreferenceCategory>
 
 </PreferenceScreen>
