@@ -149,6 +149,12 @@
                 android:summaryOff="@string/summary_dashboard_conditions_disabled"
                 android:defaultValue="true" />
 
+        <com.citrus.settings.preference.SystemSettingSwitchPreference
+                android:key="remove_tile_summary"
+                android:title="@string/remove_tile_summaries_title"
+                android:summary="@string/remove_tile_summaries_summary"
+                android:defaultValue="false" />
+
         </PreferenceCategory>
 
         <PreferenceCategory
