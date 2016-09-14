@@ -161,11 +161,12 @@ public class Settings extends SettingsActivity {
     public static class WifiAPITestActivity extends SettingsActivity { /* empty */ }
     public static class WifiInfoActivity extends SettingsActivity { /* empty */ }
     public static class SMQQtiFeedbackActivity extends SettingsActivity { /* empty */ }
+    public static class SubstratumLaunchActivity extends SettingsActivity { /* empty */ }
 
     // Categories.
     public static class WirelessSettings extends SettingsActivity { /* empty */ }
     public static class DeviceSettings extends SettingsActivity { /* empty */ }
     public static class PersonalSettings extends SettingsActivity { /* empty */ }
     public static class SystemSettings extends SettingsActivity { /* empty */ }
-    public static class CustomSquashActivity extends SettingsActivity { /* empty */ } 
+    public static class CustomSquashActivity extends SettingsActivity { /* empty */ }
 }

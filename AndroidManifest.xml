@@ -1051,6 +1051,23 @@
                 android:value="true" />
         </activity>
 
+        <activity android:name="Settings$SubstratumLaunchActivity"
+            android:label="@string/substratum_settings_title"
+            android:icon="@drawable/ic_settings_substratum"
+            android:taskAffinity=""
+            android:parentActivityName="Settings">
+            <intent-filter android:priority="2">
+                <action android:name="com.android.settings.action.SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                android:value="com.android.settings.category.citrus" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.citrus.SubstratumLaunch" />
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
+
         <activity android:name="Settings$DisplaySettingsActivity"
                 android:label="@string/display_settings"
                 android:icon="@drawable/ic_settings_display"

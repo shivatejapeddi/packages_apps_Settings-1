@@ -78,6 +78,7 @@ import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.VrListenerSettings;
 import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.bluetooth.BluetoothSettings;
+import com.android.settings.citrus.SubstratumLaunch;
 import com.android.settings.dashboard.DashboardContainerFragment;
 import com.android.settings.dashboard.SearchResultsSummary;
 import com.android.settings.datausage.DataUsageSummary;
@@ -142,6 +143,8 @@ import com.android.settingslib.drawer.Tile;
 import com.citrus.settings.CustomSquash;
 
 import java.net.URISyntaxException;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -387,7 +390,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             NightDisplaySettings.class.getName(),
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
-            CustomSquash.class.getName()
+            CustomSquash.class.getName(),
+            SubstratumLaunch.class.getName()
     };
 
 
@@ -1269,6 +1273,15 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                 Settings.ProfileMgrMainActivity.class.getName()),
                 getResources().getBoolean(R.bool.config_profilemgrmain_enabled), isAdmin, pm);
+
+        boolean substratumSupported = false;
+        try {
+            substratumSupported = (pm.getPackageInfo("projekt.substratum", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                Settings.SubstratumLaunchActivity.class.getName()),
+                substratumSupported, isAdmin, pm);
 
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                     DevelopmentSettings.PREF_SHOW, android.os.Build.TYPE.equals("eng") || android.os.Build.TYPE.equals("userdebug"))
