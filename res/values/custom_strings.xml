@@ -35,4 +35,7 @@
    <string name="header_category_personalization">Personalization</string>
    <string name="custom_title">Custom Squash!</string>
 
+    <!-- substratum dashboard tile title -->
+    <string name="substratum_settings_title">Substratum</string>
+
 </resources>
