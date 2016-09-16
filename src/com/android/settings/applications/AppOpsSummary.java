@@ -38,7 +38,7 @@ import com.android.settings.R;
 public class AppOpsSummary extends InstrumentedFragment {
     // layout inflater object used to inflate views
     private LayoutInflater mInflater;
-    
+
     private ViewGroup mContentContainer;
     private View mRootView;
     private ViewPager mViewPager;
@@ -107,7 +107,7 @@ public class AppOpsSummary extends InstrumentedFragment {
         mContentContainer = container;
         mRootView = rootView;
 
-        mPageNames = getResources().getTextArray(R.array.app_ops_categories);
+        mPageNames = getResources().getTextArray(R.array.app_ops_categories_custom);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
