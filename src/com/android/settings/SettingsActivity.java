@@ -142,6 +142,10 @@ import com.android.settingslib.drawer.Tile;
 
 import com.citrus.settings.CustomSquash;
 import com.citrus.settings.fragments.ExpandedDesktop;
+import com.citrus.settings.fragments.FlingSettings;
+import com.citrus.settings.fragments.NavbarSettings;
+import com.citrus.settings.fragments.SmartbarSettings;
+import com.citrus.settings.fragments.PulseSettings;
 
 import java.net.URISyntaxException;
 
@@ -392,7 +396,11 @@ public class SettingsActivity extends SettingsDrawerActivity
             AutomaticStorageManagerSettings.class.getName(),
             CustomSquash.class.getName(),
             SubstratumLaunch.class.getName(),
-            ExpandedDesktop.class.getName()
+            ExpandedDesktop.class.getName(),
+            NavbarSettings.class.getName(),
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName(),
+            PulseSettings.class.getName()
     };
 
 
