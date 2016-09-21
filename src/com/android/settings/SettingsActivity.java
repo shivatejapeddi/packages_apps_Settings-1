@@ -136,6 +136,10 @@ import com.android.settingslib.drawer.Tile;
 import com.android.settings.citrus.SubstratumLaunch;
 import com.citrus.settings.CustomSquash;
 import com.citrus.settings.fragments.ExpandedDesktop;
+import com.citrus.settings.fragments.FlingSettings;
+import com.citrus.settings.fragments.NavbarSettings;
+import com.citrus.settings.fragments.SmartbarSettings;
+import com.citrus.settings.fragments.PulseSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -377,10 +381,11 @@ public class SettingsActivity extends SettingsDrawerActivity
             WifiInfo.class.getName(),
             CustomSquash.class.getName(),
             SubstratumLaunch.class.getName(),
-<<<<<<< HEAD
-=======
             ExpandedDesktop.class.getName(),
->>>>>>> f19d24e... [QUICK SETTINGS] Expanded Desktop tile longpress action
+            NavbarSettings.class.getName(),
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName(),
+            PulseSettings.class.getName()
     };
 
 
