@@ -1068,6 +1068,9 @@
                 android:value="true" />
         </activity>
 
+        <activity android:name=".citrus.led.NotificationLightSettings" />
+        <activity android:name=".citrus.led.BatteryLightSettings" />
+
         <activity android:name="Settings$DisplaySettingsActivity"
                 android:label="@string/display_settings"
                 android:icon="@drawable/ic_settings_display"
