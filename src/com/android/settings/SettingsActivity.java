@@ -141,9 +141,9 @@ import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 
 import com.citrus.settings.CustomSquash;
+import com.citrus.settings.fragments.ExpandedDesktop;
 
 import java.net.URISyntaxException;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -391,7 +391,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
             CustomSquash.class.getName(),
-            SubstratumLaunch.class.getName()
+            SubstratumLaunch.class.getName(),
+            ExpandedDesktop.class.getName()
     };
 
 
