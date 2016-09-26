@@ -140,6 +140,7 @@ import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 
 import com.citrus.settings.CustomSquash;
+import com.citrus.settings.fragments.ExpandedDesktop;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -387,7 +388,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             NightDisplaySettings.class.getName(),
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
-            CustomSquash.class.getName()
+            CustomSquash.class.getName(),
+            ExpandedDesktop.class.getName()
     };
 
 
