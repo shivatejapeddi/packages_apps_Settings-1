@@ -115,6 +115,11 @@
                 android:title="@string/battery_light_title"
                 android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
+         <Preference
+            android:key="heads_up_enabled"
+            android:fragment="com.android.settings.cardinal.fragments.HeadsUpSettings"
+            android:title="@string/category_heads_up" />
+
          <!-- When device is locked -->
         <com.android.settings.DropDownPreference
                 android:key="lock_screen_notifications"
