@@ -22,6 +22,13 @@
         android:title="@string/notification_light_general_title">
 
         <com.citrus.settings.preference.SystemSettingSwitchPreference
+            android:key="notification_light_color_auto"
+            android:title="@string/notification_light_automagic"
+            android:summary="@string/notification_light_automagic_summary"
+            android:dependency="notification_light_pulse"
+            android:defaultValue="true" />
+
+        <com.citrus.settings.preference.SystemSettingSwitchPreference
             android:key="notification_light_pulse"
             android:title="@string/notification_light_title" />
 
