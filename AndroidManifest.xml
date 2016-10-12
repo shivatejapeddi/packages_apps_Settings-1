@@ -130,11 +130,20 @@
 
         <activity android:name=".Settings$WirelessSettings"
             android:label="@string/header_category_wireless_networks">
-            <intent-filter android:priority="4">
+            <intent-filter android:priority="5">
                 <action android:name="com.android.settings.category.wireless" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".Settings$Citrus"
+            android:label="@string/header_category_personalization">
+            <intent-filter android:priority="4">
+                  <action android:name="com.android.settings.category.citrus" />
+                  <category android:name="android.intent.category.DEFAULT" />
+              </intent-filter>
+            </activity>
 
         <activity android:name=".Settings$DeviceSettings"
             android:label="@string/header_category_device">
@@ -1013,6 +1022,31 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.ZenModeExternalRuleSettings" />
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
+
+        <activity android:name="Settings$CustomSquashActivity"
+            android:label="@string/custom_title"
+            android:icon="@drawable/ic_citrus_logo"
+            android:taskAffinity="">
+            <intent-filter android:priority="1">
+                <action android:name="citrus.settings.CustomSquash" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <intent-filter android:priority="9">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                android:value="com.android.settings.category.citrus" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.CustomSquash" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
