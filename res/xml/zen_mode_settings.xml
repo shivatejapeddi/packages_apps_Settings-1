@@ -36,4 +36,23 @@
             android:key="visual_interruptions_settings"
             android:title="@string/zen_mode_visual_interruptions_settings_title"
             android:fragment="com.android.settings.notification.ZenModeVisualInterruptionSettings" />
+
+        <com.citrus.settings.preference.SecureSettingSwitchPreference
+            android:key="sysui_volume_down_silent"
+            android:title="@string/volbtn_down_zen_title"
+            android:summary="@string/volbtn_down_zen_summary"
+            android:defaultValue="true"/>
+
+        <com.citrus.settings.preference.SecureSettingSwitchPreference
+            android:key="sysui_volume_up_silent"
+            android:title="@string/volbtn_up_zen_title"
+            android:summary="@string/volbtn_up_zen_summary"
+            android:defaultValue="true" />
+
+        <com.citrus.settings.preference.SecureSettingSwitchPreference
+            android:key="sysui_show_full_zen"
+            android:title="@string/vol_zen_title"
+            android:summary="@string/vol_zen_summary"
+            android:defaultValue="false"/>
+
 </PreferenceScreen>
