@@ -150,4 +150,8 @@
     <string name="vol_zen_title">Do not disturb switch</string>
     <string name="vol_zen_summary">Show do not disturb swith on volume panel</string>
 
+    <!-- About Citrus -->
+    <string name="aboutcitrus">About Citrus-CAF</string>
+    <string name="aboutcitrus_summary">Get to know about us!</string>
+
 </resources>
