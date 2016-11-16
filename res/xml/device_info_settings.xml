@@ -18,6 +18,17 @@
         xmlns:settings="http://schemas.android.com/apk/res-auto"
         android:title="@string/about_settings">
 
+        <!-- About Citrus -->
+        <PreferenceScreen
+            android:key="aboutcitrus"
+            android:title="@string/aboutcitrus"
+            android:summary="@string/aboutcitrus_summary"
+ 		        android:icon="@drawable/ic_citrus_about">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.citrus.aboutcitrus"
+                    android:targetClass="com.citrus.aboutcitrus.MainActivity" />
+        </PreferenceScreen>
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"
