@@ -30,6 +30,7 @@ import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.PreferenceGroup;
 import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
@@ -45,6 +46,8 @@ import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.internal.os.RegionalizationEnvironment;
 import com.android.internal.os.IRegionalizationService;
+
+import com.citrus.settings.utils.Utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -87,9 +90,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
     private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
-
+    private static final String KEY_ABOUTCITRUS = "aboutcitrus";
+    private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
     long[] mHits = new long[3];
 
+    private PreferenceScreen mCitrusAbout;
     private UserManager mUm;
 
     private EnforcedAdmin mFunDisallowedAdmin;
@@ -114,6 +119,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         mUm = UserManager.get(getActivity());
 
         addPreferencesFromResource(R.xml.device_info_settings);
+
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
@@ -160,6 +167,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         } else if (!SELinux.isSELinuxEnforced()) {
             String status = getResources().getString(R.string.selinux_status_permissive);
             setStringSummary(KEY_SELINUX_STATUS, status);
+        }
+
+        //Remove About Citrus if package is removed
+        mCitrusAbout = (PreferenceScreen) findPreference(KEY_ABOUTCITRUS);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_ABOUTCITRUS_PACKAGE_NAME)) {
+            prefSet.removePreference(mCitrusAbout);
         }
 
         // Remove selinux information if property is not present
