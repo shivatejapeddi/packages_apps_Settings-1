@@ -1034,6 +1034,8 @@
                 android:value="true" />
         </activity>
 
+        <activity android:name="com.citrus.settings.fragments.HAFRAppListActivity" /> 
+
         <activity android:name="Settings$CustomSquashActivity"
             android:label="@string/custom_title"
             android:icon="@drawable/ic_citrus_logo"
