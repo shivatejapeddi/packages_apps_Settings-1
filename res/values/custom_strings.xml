@@ -154,4 +154,8 @@
     <string name="aboutcitrus">About Citrus-CAF</string>
     <string name="aboutcitrus_summary">Get to know about us!</string>
 
+    <!-- Changelog -->
+    <string name="changelog_custom_title">Changelog</string>
+    <string name="changelog_custom_error">Unable to load changelog</string>
+
 </resources>
