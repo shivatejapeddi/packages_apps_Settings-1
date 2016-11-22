@@ -153,4 +153,8 @@
     <string name="aboutcitrus">About Citrus-CAF</string>
     <string name="aboutcitrus_summary">Get to know about us!</string>
 
+    <!--CAF Branch-->
+    <string name="caf_branch">CAF Branch/Tag</string>
+    <string name="caf_branch_default">Unknown</string>
+
 </resources>
