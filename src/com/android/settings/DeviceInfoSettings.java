@@ -92,6 +92,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
     private static final String KEY_ABOUTCITRUS = "aboutcitrus";
     private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
+    private static final String KEY_CAF_BRANCH = "caf_branch";
+    private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
+
     long[] mHits = new long[3];
 
     private PreferenceScreen mCitrusAbout;
@@ -141,6 +144,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         setValueSummary(KEY_CITRUS_VERSION, "ro.citrus.version");
         findPreference(KEY_CITRUS_VERSION).setEnabled(true);
+        setValueSummary(KEY_CAF_BRANCH, PROPERTY_CAF_BRANCH);
+        // Remove CAF Branch preference if property is not present
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CAF_BRANCH,
+                PROPERTY_CAF_BRANCH);
+
         setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.citrus.maintainer");
 
         // Remove QGP Version if property is not present
