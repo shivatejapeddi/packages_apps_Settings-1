@@ -143,4 +143,8 @@
     <string name="device_maintainer">Device maintainer</string>
     <string name="device_maintainers">Device maintainers</string>
 
+    <!--CAF Branch-->
+    <string name="caf_branch">CAF Branch/Tag</string>
+    <string name="caf_branch_default">Unknown</string>
+
 </resources>
