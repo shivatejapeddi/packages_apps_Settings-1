@@ -29,6 +29,12 @@
                     android:targetClass="com.citrus.aboutcitrus.MainActivity" />
         </PreferenceScreen>
 
+        <!-- Changelog -->
+        <PreferenceScreen android:key="changelog"
+                android:title="@string/changelog_custom_title"
+                android:fragment="com.android.settings.citrus.Changelog" />
+
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"
