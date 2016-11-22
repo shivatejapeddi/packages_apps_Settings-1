@@ -84,6 +84,12 @@
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
 
+        <!-- CAF Branch -->
+        <Preference android:key="caf_branch"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/caf_branch"
+                android:summary="@string/caf_branch_default" />
+
         <!-- Citrus-CAF version -->
         <Preference android:key="citrus_version"
                 style="?android:preferenceInformationStyle"
