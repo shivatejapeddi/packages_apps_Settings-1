@@ -147,4 +147,8 @@
     <string name="caf_branch">CAF Branch/Tag</string>
     <string name="caf_branch_default">Unknown</string>
 
+    <!-- Changelog -->
+    <string name="changelog_custom_title">Changelog</string>
+    <string name="changelog_custom_error">Unable to load changelog</string>
+
 </resources>
