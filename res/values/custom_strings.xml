@@ -441,4 +441,9 @@
 
     <!-- Camera sound switch -->
     <string name="camera_sounds_title">Camera shutter sound</string>
+
+    <!-- Themes -->
+    <string name="themes_title">Themes</string>
+    <string name="themes_dashboard_summary">Manage your themes</string>
+
 </resources>
