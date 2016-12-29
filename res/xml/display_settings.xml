@@ -111,12 +111,6 @@
                 android:key="density_category"
                 android:title="@string/density_category">
 
-        <com.android.settings.WarnedPreference
-                android:key="font_size_mode"
-                android:title="@string/title_font_size"
-                settings:keywords="@string/keywords_display_font_size"
-                android:summary="@string/summary_font_size" />
-
         <PreferenceScreen
                 android:key="font_size"
                 android:title="@string/title_font_size"
