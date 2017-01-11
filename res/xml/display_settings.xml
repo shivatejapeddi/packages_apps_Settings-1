@@ -97,8 +97,9 @@
                 android:summary="@string/tap_to_wake_summary" />
 
         <SwitchPreference
- 		 android:key="srgb"
- 		 android:title="@string/srgb_title" />
+                android:key="srgb"
+                android:title="@string/srgb_title"
+                android:summary="@string/srgb_summary" />
 
         <PreferenceScreen
                 android:key="wifi_display"
