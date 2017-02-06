@@ -18,6 +18,6 @@
 
     <!--CAF Revision-->
     <string name="caf_branch">CAF Revision</string>
-    <string name="caf_branch_default">Unknown</string>
+    <string name="caf_branch_summary">%s</string>
 
 </resources>
