@@ -134,11 +134,11 @@
 
     <!--Citrus-CAF Version-->
     <string name="citrus_version">Citrus-CAF Version</string>
-    <string name="citrus_version_default">Unknown</string>
+    <string name="citrus_version_summary">%s</string>
 
-    <!-- About phone screen, Cardinal-AOSP device maintainer name -->
+    <!-- About phone screen,  device maintainer name -->
     <string name="device_maintainer">Device maintainer</string>
-    <string name="device_maintainers">Device maintainers</string>
+    <string name="device_maintainer_summary">%s</string>
 
     <!-- Volume down enter do not disturb -->
     <string name="volbtn_down_zen_title">Volume down for do not disturb</string>
