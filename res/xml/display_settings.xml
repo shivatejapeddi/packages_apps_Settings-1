@@ -108,6 +108,25 @@
                 android:title="@string/display_vr_pref_title" />
 
         <PreferenceCategory
+             android:key="rotation_category"
+             android:title="@string/rotation_category" >
+
+        <SwitchPreference
+                android:key="accelerometer"
+                android:title="@string/accelerometer_title"
+                android:persistent="false" />
+
+        <MultiSelectListPreference
+                android:key="rotation_angles"
+                android:title="@string/display_rotation_title"
+                android:defaultValue="@array/display_rotation_default_values"
+                android:entries="@array/display_rotation_entries"
+                android:entryValues="@array/display_rotation_values"
+                android:persistent="false" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
                 android:key="density_category"
                 android:title="@string/density_category">
 
@@ -125,20 +144,6 @@
         <com.android.settings.display.DensityPreference
                 android:key="density"
                 android:title="@string/developer_smallest_width" />
-
-        <SwitchPreference
-                android:key="accelerometer"
-                android:title="@string/accelerometer_title"
-                android:persistent="false" />
-
-        <MultiSelectListPreference
-                android:key="rotation_angles"
-                android:title="@string/display_rotation_title"
-                android:defaultValue="@array/display_rotation_default_values"
-                android:entries="@array/display_rotation_entries"
-                android:entryValues="@array/display_rotation_values"
-                android:persistent="false" />
-
         </PreferenceCategory>
 
 </PreferenceScreen>
