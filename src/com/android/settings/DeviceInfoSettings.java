@@ -77,6 +77,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_CITRUS_VERSION = "citrus_version";
+    private static final String PROPERTY_CITRUS_VERSION = "ro.citrus.version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
@@ -89,6 +90,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/qgpversion";
     private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
+    private static final String PROPERTY_DEVICE_MAINTAINER = "ro.citrus.maintainer";
     private static final String KEY_ABOUTCITRUS = "aboutcitrus";
     private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
     private static final String KEY_CAF_BRANCH = "caf_branch";
@@ -140,16 +142,19 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
-        //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
-        setValueSummary(KEY_CITRUS_VERSION, "ro.citrus.version");
-        findPreference(KEY_CITRUS_VERSION).setEnabled(true);
+        setValueSummary(KEY_CITRUS_VERSION, PROPERTY_CITRUS_VERSION);
+       // Remove Citrus Version  preference if property is not present
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CITRUS_VERSION,
+                PROPERTY_CITRUS_VERSION);
         setValueSummary(KEY_CAF_BRANCH, PROPERTY_CAF_BRANCH);
         // Remove CAF Branch preference if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CAF_BRANCH,
                 PROPERTY_CAF_BRANCH);
-
-        setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.citrus.maintainer");
-
+        setValueSummary(KEY_DEVICE_MAINTAINER, PROPERTY_DEVICE_MAINTAINER); 
+       // Remove Maintainer preference if property is not present
+       removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_DEVICE_MAINTAINER,
+                PROPERTY_DEVICE_MAINTAINER);
+        //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         // Remove QGP Version if property is not present
         //removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
         //        PROPERTY_QGP_VERSION);
@@ -365,20 +370,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             findPreference(preference).setSummary(
                     SystemProperties.get(property,
                             getResources().getString(R.string.device_info_default)));
-        } catch (RuntimeException e) {
-            // No recovery
-        }
-    }
-
-    private void setMaintainerSummary(String preference, String property) {
-        try {
-            String maintainers = SystemProperties.get(property,
-                    getResources().getString(R.string.device_info_default));
-            findPreference(preference).setSummary(maintainers);
-            if (maintainers.contains(",")) {
-                findPreference(preference).setTitle(
-                        getResources().getString(R.string.device_maintainers));
-            }
         } catch (RuntimeException e) {
             // No recovery
         }
