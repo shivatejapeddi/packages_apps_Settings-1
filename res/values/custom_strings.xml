@@ -46,6 +46,7 @@
    <string name="bluetooth_accept_all_files">Accept all file types</string>
 
     <!-- Display : Rotation -->
+    <string name="rotation_category">Rotaion</string>
     <string name="display_rotation_title">Rotation angles</string>
     <string name="display_rotation_disabled">Disabled</string>
     <string name="display_rotation_unit">degrees</string>
