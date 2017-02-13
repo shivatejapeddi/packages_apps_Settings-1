@@ -144,7 +144,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         setValueSummary(KEY_CITRUS_VERSION, PROPERTY_CITRUS_VERSION);
-       // Remove CAF Branch preference if property is not present
+       // Remove Citrus Version  preference if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CITRUS_VERSION,
                 PROPERTY_CITRUS_VERSION);
         setValueSummary(KEY_CAF_BRANCH, PROPERTY_CAF_BRANCH);
