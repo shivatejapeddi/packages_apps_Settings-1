@@ -37,6 +37,7 @@
 
     <!-- substratum dashboard tile title -->
     <string name="substratum_settings_title">Substratum</string>
+    <string name="substratum_dashboard_summary">Manage substratum themes</string>
 
     <!-- Screenshot sound -->
     <string name="screenshot_sound_title">Screenshot sound</string>
