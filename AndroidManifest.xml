@@ -1065,6 +1065,8 @@
                 android:value="com.android.settings.category.citrus" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.citrus.SubstratumLaunch" />
+            <meta-data android:name="com.android.settings.summary"
+                android:resource="@string/substratum_dashboard_summary" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
