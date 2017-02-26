@@ -79,7 +79,7 @@
             android:title="@string/power_notifications_category_title"/>
 
     <SwitchPreference
-            android:key="power_notifications"
+            android:key="charging_sounds" 
             android:title="@string/power_notifications_enable_title"
             android:summary="@string/power_notifications_enable_summary"
             android:defaultValue="false" />
@@ -88,11 +88,11 @@
             android:key="power_notifications_vibrate"
             android:title="@string/power_notifications_vibrate_title"
             android:defaultValue="false"
-            android:dependency="power_notifications" />
+            android:dependency="charging_sounds" />
 
     <Preference
             android:key="power_notifications_ringtone"
             android:title="@string/power_notifications_ringtone_title"
-            android:dependency="power_notifications" />
+            android:dependency="charging_sounds" />
 
 </PreferenceScreen>
