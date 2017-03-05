@@ -145,6 +145,7 @@ import com.citrus.settings.fragments.FlingSettings;
 import com.citrus.settings.fragments.NavbarSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.fragments.PulseSettings;
+import com.citrus.settings.fragments.QuickSettings;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -397,7 +398,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             NavbarSettings.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
-            PulseSettings.class.getName()
+            PulseSettings.class.getName(),
+            QuickSettings.class.getName()
     };
 
 
