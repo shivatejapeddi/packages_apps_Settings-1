@@ -17,11 +17,15 @@
 package com.android.settings.notification;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -48,6 +52,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.TwoStatePreference;
@@ -89,10 +94,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
     private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
-
+    private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
-    private static final int REQUEST_CODE = 200;
 
+    private static final int REQUEST_CODE = 200;
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
         KEY_ALARM_VOLUME,
@@ -102,6 +107,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     };
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
+    private static final int DLG_SAFE_HEADSET_VOLUME = 0;
 
     private final VolumePreferenceCallback mVolumeCallback = new VolumePreferenceCallback();
     private final IncreasingRingVolumePreference.Callback mIncreasingRingVolumeCallback =
@@ -137,6 +143,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private TwoStatePreference mVolumeLinkNotification;
 
     private ListPreference mAnnoyingNotifications;
+    private SwitchPreference mSafeHeadsetVolume;
 
     private PackageManager mPm;
     private UserManager mUserManager;
@@ -169,6 +176,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 0);
         mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
         mAnnoyingNotifications.setOnPreferenceChangeListener(this);
+
+        mSafeHeadsetVolume = (SwitchPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
+        mSafeHeadsetVolume.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.SAFE_HEADSET_VOLUME, 1) != 0);
+        mSafeHeadsetVolume.setOnPreferenceChangeListener(this);
 
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
@@ -606,7 +618,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                         // otherwise notification volume will only change after next
                         // change of ringer volume
                         final int ringerVolume = mAudioManager.getStreamVolume(AudioSystem.STREAM_RING);
-                        mAudioManager.setStreamVolume(AudioSystem.STREAM_NOTIFICATION, ringerVolume, 0);  
+                        mAudioManager.setStreamVolume(AudioSystem.STREAM_NOTIFICATION, ringerVolume, 0);
                     }
                     Settings.System.putInt(getContentResolver(),
                             Settings.System.VOLUME_LINK_NOTIFICATION, val ? 1 : 0);
@@ -824,9 +836,74 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             Settings.System.putInt(getContentResolver(),
                     Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
         }
+        else if (KEY_SAFE_HEADSET_VOLUME.equals(key)) {
+            if ((Boolean) objValue) {
+                Settings.System.putInt(getContentResolver(),
+                         Settings.System.SAFE_HEADSET_VOLUME, 1);
+            } else {
+                showDialogInner(DLG_SAFE_HEADSET_VOLUME);
+            }
+        }
         return true;
     }
 
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        SoundSettings getOwner() {
+            return (SoundSettings) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_SAFE_HEADSET_VOLUME:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.attention)
+                    .setMessage(R.string.safe_headset_volume_warning_dialog_text)
+                    .setPositiveButton(R.string.dlg_ok,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getOwner().getContentResolver(),
+                                    Settings.System.SAFE_HEADSET_VOLUME, 0);
+
+                        }
+                    })
+                    .setNegativeButton(R.string.dlg_cancel,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_SAFE_HEADSET_VOLUME:
+                    getOwner().mSafeHeadsetVolume.setChecked(true);
+                    break;
+            }
+        }
+}
     // === Indexing ===
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
