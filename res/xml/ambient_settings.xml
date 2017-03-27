@@ -31,6 +31,13 @@
         android:persistent="false" />
 
     <com.citrus.settings.preference.SystemSettingSwitchPreference
+     	android:key="ambient_display_show_battery"
+   	    android:title="@string/ambient_display_show_battery_title"
+       	android:summary="@string/ambient_display_show_battery_summary"
+       	android:dependency="doze"
+       	android:defaultValue="true" />
+
+    <com.citrus.settings.preference.SystemSettingSwitchPreference
         android:key="doze_overwrite_value"
         android:title="@string/doze_overwrite_value_title"
         android:summary="@string/doze_overwrite_value_summary"
