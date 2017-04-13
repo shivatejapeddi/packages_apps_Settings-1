@@ -58,6 +58,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.IOException;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
@@ -95,6 +96,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
     private static final String KEY_CAF_BRANCH = "caf_branch";
     private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
+    private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
 
     long[] mHits = new long[3];
 
@@ -160,7 +162,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         //        PROPERTY_QGP_VERSION);
         String mQGPVersion = getQGPVersionValue();
         setStringSummary(KEY_QGP_VERSION, mQGPVersion);
-        if(mQGPVersion == null){
+        if(TextUtils.isEmpty(mQGPVersion)){
             getPreferenceScreen().removePreference(findPreference(KEY_QGP_VERSION));
         }
         findPreference(KEY_KERNEL_VERSION).setSummary(DeviceInfoUtils.customizeFormatKernelVersion(
@@ -169,7 +171,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_KERNEL_VERSION).setEnabled(true);
         String mMbnVersion = getMBNVersionValue();
         setStringSummary(KEY_MBN_VERSION, mMbnVersion);
-        if(mMbnVersion == null){
+        if(TextUtils.isEmpty(mMbnVersion)){
             getPreferenceScreen().removePreference(findPreference(KEY_MBN_VERSION));
         }
 
@@ -347,7 +349,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     private String getQGPVersionValue() {
         String mVersion = null;
-
+        String mQGPString = null;
+        List<String> mContents = null;
         if (RegionalizationEnvironment.isSupported()) {
             mRegionalizationService = RegionalizationEnvironment.getRegionalizationService();
         }
@@ -355,9 +358,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             try{
                 if(!mRegionalizationService.checkFileExists(QGP_VERSION_PATH))
                     return null;
-                if(mRegionalizationService.readFile(QGP_VERSION_PATH, "").size() > 0){
-                    mVersion = mRegionalizationService.readFile(QGP_VERSION_PATH, "").get(0);
+                mContents = mRegionalizationService.readFile(QGP_VERSION_PATH, null);
+                if(!(mContents.size() > 1))
+                    return null;
+                mQGPString = mContents.get(1);
+                if (!mQGPString.startsWith("qgpversion=")) {
+                    return null;
                 }
+                mVersion = mQGPString.substring("qgpversion=".length());
                 Log.d(LOG_TAG,"read QGPVersion="+mVersion);
             }catch (Exception e) {
                 Log.e(LOG_TAG, "IOException:"+ e.getMessage());
