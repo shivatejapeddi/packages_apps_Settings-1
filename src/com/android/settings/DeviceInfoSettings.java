@@ -96,7 +96,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_ABOUTCITRUS_PACKAGE_NAME = "com.citrus.aboutcitrus";
     private static final String KEY_CAF_BRANCH = "caf_branch";
     private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
-    private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
 
     long[] mHits = new long[3];
 
