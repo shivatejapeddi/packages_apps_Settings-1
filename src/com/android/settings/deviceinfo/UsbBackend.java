@@ -94,13 +94,33 @@ public class UsbBackend {
         return MODE_POWER_SINK | getUsbDataMode();
     }
 
+    private boolean isInPowerSourceMode(){
+        if(mPort != null){
+            return mPortStatus.getCurrentPowerRole() == UsbPort.POWER_ROLE_SOURCE;
+        }
+        return false;
+    }
+
     public int getUsbDataMode() {
         if (mTetheringEnabled
                 && mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_RNDIS)) {
             return MODE_DATA_TETHERING;
         }
         if (!mIsUnlocked) {
+<<<<<<< HEAD
             return MODE_DATA_NONE;
+=======
+            if(isInPowerSourceMode()){
+                //In power supply mode
+                return MODE_DATA_NONE;
+            }else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_MTP)) {
+                //Take this as charging mode
+                return MODE_DATA_NONE;
+            } else {
+                // select none if no found
+                return -1;
+            }
+>>>>>>> 894212c7c55b81c2f468be7f0eba62e3e552bd73
         } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_MTP)) {
             return MODE_DATA_MTP;
         } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_PTP)) {
@@ -130,6 +150,13 @@ public class UsbBackend {
                 intent.setClass(mContext, TetherSettings.class);
                 mContext.startActivity(intent);
                 break;
+            case MODE_DATA_NONE:
+                //Take MTP mode and data unlocked false as charging
+                if(!isInPowerSourceMode()){
+                    mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP);
+                    mUsbManager.setUsbDataUnlocked(false);
+                    break;
+                }
             default:
                 mUsbManager.setCurrentFunction(null);
                 mUsbManager.setUsbDataUnlocked(false);
@@ -193,5 +220,19 @@ public class UsbBackend {
         }
         // No port, support sink modes only.
         return (mode & MODE_POWER_MASK) != MODE_POWER_SOURCE;
+    }
+
+    public boolean isCurrentModeSupported(int mode){
+        if (mPort != null){
+            int power = mPortStatus.getCurrentPowerRole() == UsbPort.POWER_ROLE_SOURCE
+                    ? MODE_POWER_SOURCE : MODE_POWER_SINK;
+            int data = mode & MODE_DATA_MASK;
+            if(data == 0){
+                return (mode & MODE_POWER_MASK) == power;
+            }else if((mode & MODE_POWER_MASK) != power){
+                return false;
+            }
+        }
+        return isModeSupported(mode);
     }
 }
