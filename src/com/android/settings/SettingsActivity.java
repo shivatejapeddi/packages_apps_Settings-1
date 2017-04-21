@@ -144,6 +144,7 @@ import com.citrus.settings.CustomSquash;
 import com.citrus.settings.fragments.ExpandedDesktop;
 import com.citrus.settings.fragments.FlingSettings;
 import com.citrus.settings.fragments.HardwareKeys;
+import com.citrus.settings.fragments.HeadsUpSettings;
 import com.citrus.settings.fragments.NavbarSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.fragments.PulseSettings;
@@ -403,7 +404,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             PulseSettings.class.getName(),
             QuickSettings.class.getName(),
             AmbientSettings.class.getName(),
-            HardwareKeys.class.getName()
+            HardwareKeys.class.getName(),
+            HeadsUpSettings.class.getName()
     };
 
 
