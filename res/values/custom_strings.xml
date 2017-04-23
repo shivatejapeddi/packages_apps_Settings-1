@@ -450,4 +450,14 @@
     <string name="ambient_doze_custom_brightness_title">Ambient and LiftToWake brightness</string>
     <string name="ambient_doze_auto_brightness_title">Ambient and LiftToWake auto brightness</string>
     <string name="ambient_doze_auto_brightness_summary">Use last screen-on brightness value for Ambient Display or Lift to Wake screen</string>
+ 
+    <!-- Device Specifc Gesture -->
+    <string name="gestures_device_cat_title">Device</string>
+
+    <string name="device_gestures_title">Device gestures</string>
+    <string name="device_gestures_summary">Set up extra gestures for your device</string>
+
+    <string name="device_doze_title">Ambient display</string>
+    <string name="device_doze_summary">Set up extra gestures for ambient display mode</string>
+    
 </resources>
