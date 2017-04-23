@@ -24,7 +24,11 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings.Secure;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -40,6 +44,8 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.android.internal.util.custom.CustomUtils;
 
 /**
  * Top level fragment for gesture settings.
@@ -57,10 +63,23 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 
+    private static final String PREF_KEY_DEVICE_GESTURES = "device_gestures";
+    private static final String DEVICE_GESTURES_PACKAGE_NAME = "com.cyanogenmod.settings.device";
+
+    private static final String PREF_KEY_DEVICE_DOZE = "device_doze";
+    private static final String DEVICE_DOZE_PACKAGE_NAME = "com.cyanogenmod.settings.doze";
+
+    private static final String PREF_KEY_DEVICE_CAT = "device_cat";
+    
     private List<GesturePreference> mPreferences;
 
     private AmbientDisplayConfiguration mAmbientConfig;
 
+    private Preference mDeviceDoze;
+    private Preference mDeviceGestures;
+
+    private PreferenceCategory mDeviceCat;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +104,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         } else {
             removePreference(PREF_KEY_PICK_UP);
         }
+
         if (mAmbientConfig.pulseOnDoubleTapAvailable()) {
             boolean doubleTap = mAmbientConfig.pulseOnDoubleTapEnabled(UserHandle.myUserId());
             addPreference(PREF_KEY_DOUBLE_TAP_SCREEN, doubleTap);
@@ -108,6 +128,22 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             removePreference(PREF_KEY_DOUBLE_TWIST);
         }
 
+        mDeviceGestures = (PreferenceScreen) findPreference(PREF_KEY_DEVICE_GESTURES);
+        mDeviceDoze = (PreferenceScreen) findPreference(PREF_KEY_DEVICE_DOZE);
+        mDeviceCat = (PreferenceCategory) findPreference(PREF_KEY_DEVICE_CAT);
+        if (mDeviceGestures != null 
+            && !CustomUtils.isAvailableApp(DEVICE_GESTURES_PACKAGE_NAME,context)) {
+            mDeviceCat.removePreference(mDeviceGestures);
+        }
+
+        if (mDeviceDoze != null 
+            && !CustomUtils.isAvailableApp(DEVICE_DOZE_PACKAGE_NAME,context)) {
+            mDeviceCat.removePreference(mDeviceDoze);
+        }
+
+        if (mDeviceGestures == null && mDeviceDoze == null) {
+            getPreferenceScreen().removePreference(mDeviceCat);
+        }
     }
 
     @Override
