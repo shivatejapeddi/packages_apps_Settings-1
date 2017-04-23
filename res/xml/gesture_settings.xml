@@ -19,6 +19,18 @@
     android:title="@string/gesture_preference_title"
     settings:keywords="@string/keywords_gesture">
 
+    <com.citrus.settings.preference.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/double_tap_to_sleep_title"
+        android:summary="@string/double_tap_to_sleep_summary"
+        android:defaultValue="false" />
+
+    <com.citrus.settings.preference.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_lock_screen"
+        android:title="@string/double_tap_to_sleep_lockscreen_title"
+        android:summary="@string/double_tap_to_sleep_lockscreen_summary"
+        android:defaultValue="false" />
+
     <com.android.settings.gestures.GesturePreference
         android:key="gesture_swipe_down_fingerprint"
         android:title="@string/fingerprint_swipe_for_notifications_title"
@@ -54,16 +66,30 @@
         settings:animation="@raw/gesture_ambient_lift"
         settings:preview="@drawable/gesture_ambient_lift"/>
 
-    <com.citrus.settings.preference.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_gesture"
-        android:title="@string/double_tap_to_sleep_title"
-        android:summary="@string/double_tap_to_sleep_summary"
-        android:defaultValue="false" />
+<PreferenceCategory
+        android:key="device_cat"
+        android:title="@string/gestures_device_cat_title" >
 
-    <com.citrus.settings.preference.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_lock_screen"
-        android:title="@string/double_tap_to_sleep_lockscreen_title"
-        android:summary="@string/double_tap_to_sleep_lockscreen_summary"
-        android:defaultValue="false" />
+    <PreferenceScreen
+        android:key="device_gestures"
+        android:title="@string/device_gestures_title"
+        android:summary="@string/device_gestures_summary">
+        <intent
+            android:action="com.android.settings.action.EXTRA_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="device_doze"
+        android:title="@string/device_doze_title"
+        android:summary="@string/device_doze_summary">
+        <intent
+            android:action="com.android.settings.action.EXTRA_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.doze"
+            android:targetClass="com.cyanogenmod.settings.doze.DozeSettings" />
+    </PreferenceScreen>
+
+</PreferenceCategory>
 
 </PreferenceScreen>
