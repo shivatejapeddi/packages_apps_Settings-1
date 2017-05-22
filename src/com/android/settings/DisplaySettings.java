@@ -121,6 +121,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
 
+    private static final String AMBIENT_DOZE_AUTO_BRIGHTNESS = "ambient_doze_auto_brightness";
+    private static final String AMBIENT_DOZE_CUSTOM_BRIGHTNESS = "ambient_doze_custom_brightness";
+
     private static final int DLG_FONTSIZE_CHANGE_WARNING = 2;
 
     private static final String KEY_NETWORK_NAME_DISPLAYED = "network_operator_display";
@@ -154,6 +157,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private WarnedPreference mDialogPref;
 
     private TimeoutListPreference mScreenTimeoutPreference;
+    private CustomSeekBarPreference mAmbientDozeCustomBrightness;
     private CustomSeekBarPreference mDashboardPortraitColumns;
     private CustomSeekBarPreference mDashboardLandscapeColumns;
 
@@ -161,6 +165,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private Preference mScreenSaverPreference;
 
+    private SwitchPreference mAmbientDozeAutoBrightness;
     private SwitchPreference mLiftToWakePreference;
     private PreferenceScreen mDozeFragment;
     private SwitchPreference mTapToWakePreference;
@@ -347,6 +352,29 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             final int currentNightMode = uiManager.getNightMode();
             mNightModePreference.setValue(String.valueOf(currentNightMode));
             mNightModePreference.setOnPreferenceChangeListener(this);
+        }
+
+        if (isDozeAvailable(activity)) {
+            mAmbientDozeCustomBrightness = (CustomSeekBarPreference) findPreference(AMBIENT_DOZE_CUSTOM_BRIGHTNESS);
+            int defaultValue = getResources().getInteger(
+                    com.android.internal.R.integer.config_screenBrightnessDoze);
+            int brightness = Settings.System.getIntForUser(resolver,
+                    Settings.System.AMBIENT_DOZE_CUSTOM_BRIGHTNESS, defaultValue, UserHandle.USER_CURRENT);
+            mAmbientDozeCustomBrightness.setValue(brightness);
+            mAmbientDozeCustomBrightness.setOnPreferenceChangeListener(this);
+
+            mAmbientDozeAutoBrightness = (SwitchPreference) findPreference(AMBIENT_DOZE_AUTO_BRIGHTNESS);
+            boolean defaultAmbientDozeAutoBrighthness = getResources().getBoolean(
+                    com.android.internal.R.bool.config_allowAutoBrightnessWhileDozing);
+            boolean isAmbientDozeAutoBrighthness = Settings.System.getIntForUser(resolver,
+                    Settings.System.AMBIENT_DOZE_AUTO_BRIGHTNESS, defaultAmbientDozeAutoBrighthness ? 1 : 0,
+                    UserHandle.USER_CURRENT) == 1;
+            mAmbientDozeAutoBrightness.setChecked(isAmbientDozeAutoBrighthness);
+            mAmbientDozeAutoBrightness.setOnPreferenceChangeListener(this);
+            mAmbientDozeCustomBrightness.setEnabled(!isAmbientDozeAutoBrighthness);
+        } else {
+            removePreference(AMBIENT_DOZE_CUSTOM_BRIGHTNESS);
+            removePreference(AMBIENT_DOZE_AUTO_BRIGHTNESS);
         }
     }
 
@@ -706,13 +734,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int columnsPortrait = (Integer) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DASHBOARD_PORTRAIT_COLUMNS, columnsPortrait * 1);
-            return true;
         }
         if (preference == mDashboardLandscapeColumns) {
             int columnsLandscape = (Integer) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DASHBOARD_LANDSCAPE_COLUMNS, columnsLandscape * 1);
-            return true;
         }
         if (preference == mNightModePreference) {
             try {
@@ -739,6 +765,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             updateRotationPreferencesState();
+        }
+        if (preference == mAmbientDozeCustomBrightness) {
+            int brightness = (Integer) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.AMBIENT_DOZE_CUSTOM_BRIGHTNESS, brightness, UserHandle.USER_CURRENT);
+        }
+        if (preference == mAmbientDozeAutoBrightness) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.AMBIENT_DOZE_AUTO_BRIGHTNESS, value ? 1 : 0, UserHandle.USER_CURRENT);
+            mAmbientDozeCustomBrightness.setEnabled(!value);
         }
         return true;
     }
