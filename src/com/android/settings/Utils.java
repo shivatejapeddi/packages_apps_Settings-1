@@ -104,6 +104,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabWidget;
 
@@ -1406,4 +1407,7 @@ public final class Utils extends com.android.settingslib.Utils {
         }
     }
 
+    public static void setEditTextCursorPosition(EditText editText) {
+        editText.setSelection(editText.getText().length());
+    }
 }
