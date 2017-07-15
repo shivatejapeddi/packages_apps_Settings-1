@@ -128,7 +128,7 @@
     <string name="volbtn_up_zen_summary">allow volume up to exit do not disturb mode</string>
     <!-- Volume do not disturb switch -->
     <string name="vol_zen_title">Do not disturb switch</string>
-    <string name="vol_zen_summary">Show do not disturb swith on volume panel</string>
+    <string name="vol_zen_summary">Show do not disturb switch on volume panel</string>
 
     <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
@@ -149,7 +149,7 @@
     <string name="volbtn_up_zen_summary">allow volume up to exit do not disturb mode</string>
     <!-- Volume do not disturb switch -->
     <string name="vol_zen_title">Do not disturb switch</string>
-    <string name="vol_zen_summary">Show do not disturb swith on volume panel</string>
+    <string name="vol_zen_summary">Show do not disturb switch on volume panel</string>
 
     <!-- About Citrus -->
     <string name="aboutcitrus">About Citrus-CAF</string>
