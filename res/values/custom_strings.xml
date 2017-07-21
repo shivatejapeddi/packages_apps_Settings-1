@@ -416,4 +416,8 @@
     <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
     <string name="data_usage_app_restrict_all_wifi_summary">Prevent any use of data access via Wi\u2011Fi networks</string>
 
+    <!-- Development Settings -->
+    <!-- Dev Options Enabled by Default -->
+    <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
+
 </resources>
