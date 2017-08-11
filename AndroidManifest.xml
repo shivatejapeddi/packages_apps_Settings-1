@@ -1064,6 +1064,17 @@
         <activity android:name=".citrus.led.NotificationLightSettings" />
         <activity android:name=".citrus.led.BatteryLightSettings" />
 
+        <!-- HwKeys settings activity. -->
+        <activity android:name="Settings$HwKeysSettingsActivity"
+                android:label="@string/hardware_keys_settings_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.fragments.HardwareKeys" />
+        </activity>
+
         <activity android:name="Settings$DisplaySettingsActivity"
                 android:label="@string/display_settings"
                 android:icon="@drawable/ic_settings_display"

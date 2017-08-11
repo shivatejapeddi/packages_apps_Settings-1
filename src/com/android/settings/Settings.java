@@ -161,6 +161,7 @@ public class Settings extends SettingsActivity {
     public static class WifiAPITestActivity extends SettingsActivity { /* empty */ }
     public static class WifiInfoActivity extends SettingsActivity { /* empty */ }
     public static class SMQQtiFeedbackActivity extends SettingsActivity { /* empty */ }
+    public static class HwKeysSettingsActivity extends SettingsActivity { /* empty */ }
 
     // Categories.
     public static class WirelessSettings extends SettingsActivity { /* empty */ }
@@ -175,4 +176,5 @@ public class Settings extends SettingsActivity {
     public static class PulseSettingsActivity extends SettingsActivity { /* empty */ }
     public static class QuickSettingsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AmbientSettingsActivity extends SettingsActivity { /* empty */ }
+
 }
