@@ -358,7 +358,6 @@
     <string name="doze_trigger_notification_title">Notification trigger</string>
     <string name="doze_trigger_notification_summary_on">Pulse will be triggered by notifications</string>
     <string name="doze_trigger_notification_summary_off">Notifications will not be utilized as a trigger</string>
-    <string name="doze_brightness_level_title">Brightness level</string>
     <string name="onehundred_ms">100 ms</string>
     <string name="twofifty_ms">250 ms</string>
     <string name="fivehundred_ms_default">500 ms (default)</string>
