@@ -50,7 +50,6 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
@@ -92,7 +91,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
-    private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
     private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
@@ -142,7 +140,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private int mRingerMode = -1;
     private TwoStatePreference mVolumeLinkNotification;
 
-    private ListPreference mAnnoyingNotifications;
     private SwitchPreference mSafeHeadsetVolume;
 
     private PackageManager mPm;
@@ -169,13 +166,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
 
         addPreferencesFromResource(R.xml.sound_settings);
-
-        mAnnoyingNotifications = (ListPreference) findPreference(KEY_LESS_NOTIFICATION_SOUNDS);
-        int notificationThreshold = Settings.System.getInt(getContentResolver(),
-                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
-                0);
-        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
-        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
 
         mSafeHeadsetVolume = (SwitchPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
         mSafeHeadsetVolume.setChecked(Settings.System.getInt(getContentResolver(),
@@ -831,12 +821,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
-        if (KEY_LESS_NOTIFICATION_SOUNDS.equals(key)) {
-            final int val = Integer.valueOf((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
-        }
-        else if (KEY_SAFE_HEADSET_VOLUME.equals(key)) {
+        if (KEY_SAFE_HEADSET_VOLUME.equals(key)) {
             if ((Boolean) objValue) {
                 Settings.System.putInt(getContentResolver(),
                          Settings.System.SAFE_HEADSET_VOLUME, 1);
