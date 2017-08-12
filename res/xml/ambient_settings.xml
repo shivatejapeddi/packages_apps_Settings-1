@@ -26,12 +26,6 @@
         android:key="doze_pulse_category"
         android:title="@string/doze_pulse_title" >
 
-        <Preference
-            android:key="doze_brightness_level"
-            android:title="@string/doze_brightness_level_title"
-            android:persistent="false"
-            android:dependency="doze_overwrite_value" />
-
         <ListPreference
             android:entries="@array/doze_pulse_duration_in_entries"
             android:entryValues="@array/doze_pulse_duration_in_values"
