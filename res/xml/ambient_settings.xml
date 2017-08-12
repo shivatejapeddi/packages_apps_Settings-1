@@ -16,6 +16,20 @@
         android:defaultValue="true"
         android:dependency="doze" />
 
+    <SwitchPreference
+        android:key="ambient_doze_auto_brightness"
+        android:title="@string/ambient_doze_auto_brightness_title"
+        android:summary="@string/ambient_doze_auto_brightness_summary"
+        android:dependency="doze" />
+
+    <com.citrus.settings.preference.CustomSeekBarPreference
+        android:key="ambient_doze_custom_brightness"
+        android:title="@string/ambient_doze_custom_brightness_title"
+        settings:max="255"
+        settings:min="1"
+        settings:units=""
+        android:persistent="false" />
+
     <com.citrus.settings.preference.SystemSettingSwitchPreference
         android:key="doze_overwrite_value"
         android:title="@string/doze_overwrite_value_title"
