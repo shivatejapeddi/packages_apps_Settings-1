@@ -15,13 +15,8 @@ import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -35,7 +30,6 @@ public class AmbientSettings extends SettingsPreferenceFragment
     private static final String KEY_DOZE_PULSE_IN = "doze_pulse_in";
     private static final String KEY_DOZE_PULSE_VISIBLE = "doze_pulse_visible";
     private static final String KEY_DOZE_PULSE_OUT = "doze_pulse_out";
-    private static final String KEY_DOZE_BRIGHTNESS_LEVEL = "doze_brightness_level";
 
     private static final String SYSTEMUI_METADATA_NAME = "com.android.systemui";
 
@@ -43,9 +37,6 @@ public class AmbientSettings extends SettingsPreferenceFragment
     private ListPreference mDozePulseIn;
     private ListPreference mDozePulseVisible;
     private ListPreference mDozePulseOut;
-
-    private DozeBrightnessDialog mDozeBrightnessDialog;
-    private Preference mDozeBrightness;
 
     @Override
     protected int getMetricsCategory() {
@@ -74,7 +65,6 @@ public class AmbientSettings extends SettingsPreferenceFragment
 
         updateDozeOptions();
 
-        mDozeBrightness = (Preference) findPreference(KEY_DOZE_BRIGHTNESS_LEVEL);
     }
 
     private void updateDozeOptions() {
@@ -131,10 +121,6 @@ public class AmbientSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-       if (preference == mDozeBrightness) {
-            showDozeBrightnessDialog();
-            return true;
-        }
         return super.onPreferenceTreeClick(preference);
     }
 
@@ -192,116 +178,5 @@ public class AmbientSettings extends SettingsPreferenceFragment
         }
         return b;
     }
+} 
 
-    private void showDozeBrightnessDialog() {
-        if (mDozeBrightnessDialog != null && mDozeBrightnessDialog.isShowing()) {
-            return;
-        }
-
-        mDozeBrightnessDialog = new DozeBrightnessDialog(getActivity());
-        mDozeBrightnessDialog.show();
-    }
-
-    private class DozeBrightnessDialog extends AlertDialog implements DialogInterface.OnClickListener {
-
-        private SeekBar mBacklightBar;
-        private EditText mBacklightInput;
-        private int mCurrentBrightness;
-        private int mMaxBrightness;
-
-        public DozeBrightnessDialog(Context context) {
-            super(context);
-        }
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            final View v = getLayoutInflater().inflate(R.layout.dialog_doze_brightness, null);
-            final Context context = getContext();
-
-            mBacklightBar = (SeekBar) v.findViewById(R.id.doze_seek);
-            mBacklightInput = (EditText) v.findViewById(R.id.doze_input);
-
-            setTitle(R.string.doze_brightness_level_title);
-            setCancelable(true);
-            setView(v);
-
-            final int dozeBrightnessConfig = getResources().getInteger(
-                    com.android.internal.R.integer.config_screenBrightnessDoze);
-            mCurrentBrightness = Settings.System.getInt(getContentResolver(),
-                    Settings.System.DOZE_SCREEN_BRIGHTNESS, dozeBrightnessConfig);
-
-            final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            mMaxBrightness = pm.getMaximumScreenBrightnessSetting();
-            mBacklightBar.setMax(mMaxBrightness);
-            mBacklightBar.setProgress(mCurrentBrightness);
-            mBacklightInput.setText(String.valueOf(mCurrentBrightness));
-
-            initListeners();
-
-            setButton(DialogInterface.BUTTON_POSITIVE, getResources().getString(R.string.okay), this);
-            setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(R.string.cancel), this);
-
-            super.onCreate(savedInstanceState);
-        }
-
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                try {
-                    int newBacklight = Integer.valueOf(mBacklightInput.getText().toString());
-                    Settings.System.putInt(getContext().getContentResolver(),
-                            Settings.System.DOZE_SCREEN_BRIGHTNESS, newBacklight);
-                } catch (NumberFormatException e) {
-                    Log.d(TAG, "NumberFormatException " + e);
-                }
-            }
-        }
-
-        private void initListeners() {
-            mBacklightBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if (seekBar.getProgress() > 0) {
-                        mBacklightInput.setText(String.valueOf(seekBar.getProgress()));
-                    }
-                }
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-                }
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                }
-            });
-
-            mBacklightInput.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-                @Override
-                public void afterTextChanged(Editable s) {
-                    boolean ok = false;
-                    try {
-                        int minValue = 1;
-                        int maxValue = mMaxBrightness;
-                        int newBrightness = Integer.valueOf(s.toString());
-
-                        if (newBrightness >= minValue && newBrightness <= maxValue) {
-                            ok = true;
-                            mBacklightBar.setProgress(newBrightness);
-                        }
-                    } catch (NumberFormatException e) {
-                        //ignored, ok is false ayway
-                    }
-
-                    Button okButton = mDozeBrightnessDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                    if (okButton != null) {
-                        okButton.setEnabled(ok);
-                    }
-                }
-            });
-        }
-    }
-}
