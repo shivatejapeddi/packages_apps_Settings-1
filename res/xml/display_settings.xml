@@ -121,6 +121,12 @@
                 android:title="@string/accelerometer_title"
                 android:persistent="false" />
 
+        <com.citrus.settings.preference.SystemSettingSwitchPreference
+                android:key="lockscreen_rotation"
+                android:title="@string/display_lockscreen_rotation_title"
+                android:defaultValue="false"
+                android:dependency="accelerometer" />
+
         <MultiSelectListPreference
                 android:key="rotation_angles"
                 android:title="@string/display_rotation_title"
