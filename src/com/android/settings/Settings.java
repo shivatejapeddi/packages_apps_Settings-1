@@ -164,6 +164,7 @@ public class Settings extends SettingsActivity {
     public static class SMQQtiFeedbackActivity extends SettingsActivity { /* empty */ }
     public static class HwKeysSettingsActivity extends SettingsActivity { /* empty */ }
     public static class HeadsUpSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TickerSettingsActivity extends SettingsActivity { /* empty */ }
 
     // Categories.
     public static class WirelessSettings extends SettingsActivity { /* empty */ }
