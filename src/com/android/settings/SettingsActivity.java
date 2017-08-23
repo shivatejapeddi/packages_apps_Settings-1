@@ -147,6 +147,7 @@ import com.citrus.settings.fragments.HardwareKeys;
 import com.citrus.settings.fragments.HeadsUpSettings;
 import com.citrus.settings.fragments.NavbarSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
+import com.citrus.settings.fragments.StatusBarTickerSettings;
 import com.citrus.settings.fragments.PulseSettings;
 import com.citrus.settings.fragments.QuickSettings;
 
@@ -407,7 +408,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             QuickSettings.class.getName(),
             AmbientSettings.class.getName(),
             HardwareKeys.class.getName(),
-            HeadsUpSettings.class.getName()
+            HeadsUpSettings.class.getName(),
+            StatusBarTickerSettings.class.getName()
     };
 
 
