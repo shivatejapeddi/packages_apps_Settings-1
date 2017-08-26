@@ -289,4 +289,40 @@
         <item>1800000</item>
     </string-array>
 
+    <!-- Display rotation -->
+    <string-array name="display_rotation_entries">
+        <item>@string/display_rotation_0_title</item>
+        <item>@string/display_rotation_90_title</item>
+        <item>@string/display_rotation_180_title</item>
+        <item>@string/display_rotation_270_title</item>
+    </string-array>
+
+    <string-array name="display_rotation_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="display_rotation_default_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>8</item>
+    </string-array>
+
+    <!-- Night mode tile brightness value  -->
+    <string-array name="night_brightness_value_entries">
+        <item>@string/night_bright_disabled</item>
+        <item>@string/night_bright_min</item>
+        <item>@string/night_bright_low</item>
+        <item>@string/night_bright_medium</item>
+    </string-array>
+
+    <string-array name="night_brightness_value_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>
