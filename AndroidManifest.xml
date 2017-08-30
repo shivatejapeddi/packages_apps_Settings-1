@@ -3316,6 +3316,22 @@
             </intent-filter>
         </activity>
 
+       <!-- Citrus-CAF Settings -->
+        <activity android:name=".Settings$CustomSquashActivity"
+                  android:label="@string/citrus_settings_activity"
+                  android:icon="@drawable/ic_settings_customsquash">
+            <intent-filter android:priority="12">
+                <action android:name="com.android.settings.action.SETTINGS"/>
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                       android:value="com.android.settings.category.ia.homepage"/>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.citrus.settings.CustomSquash"/>
+            <meta-data android:name="com.android.settings.summary"
+                       android:resource="@string/citrus_settings_activity_summary"/>
+        </activity>
+
         <!-- This is the longest AndroidManifest.xml ever. -->
+
     </application>
 </manifest>

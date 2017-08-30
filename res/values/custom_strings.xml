@@ -32,4 +32,7 @@
     <string name="aboutcitrus">About Citrus-CAF</string>
     <string name="aboutcitrus_summary">Get to know about us!</string>
 
+    <!-- CustomSquash -->
+    <string name="citrus_settings_activity">Custom Squash!</string>
+    <string name="citrus_settings_activity_summary">Additional Customizations</string>
 </resources>
