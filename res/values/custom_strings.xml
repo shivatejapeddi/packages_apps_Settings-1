@@ -26,4 +26,7 @@
     <!-- About phone screen, Citrus-CAF device maintainer name -->
     <string name="device_maintainer">Maintainer</string>
 
+    <!-- CustomSquash -->
+    <string name="citrus_settings_activity">Custom Squash!</string>
+    <string name="citrus_settings_activity_summary">Additional Customizations</string>
 </resources>
