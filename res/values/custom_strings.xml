@@ -36,4 +36,7 @@
     <!--CAF Revision-->
     <string name="caf_revision">CAF Revision</string>
 
+    <!-- CustomSquash -->
+    <string name="citrus_settings_activity">Custom Squash!</string>
+    <string name="citrus_settings_activity_summary">Additional Customizations</string>
 </resources>
