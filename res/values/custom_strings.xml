@@ -23,4 +23,7 @@
     <!--Citrus-CAF Version-->
      <string name="citrus_version">Citrus-CAF Version</string>
      
+    <!-- About phone screen, Citrus-CAF device maintainer name -->
+    <string name="device_maintainer">Maintainer</string>
+
 </resources>
