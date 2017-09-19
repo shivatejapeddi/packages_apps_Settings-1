@@ -209,4 +209,7 @@
    <string name="security_settings_fingerprint_sensor_location_left">left side</string>
    <string name="security_settings_fingerprint_sensor_location_right">right side</string>
 
+   <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
+   <string name="local_backup_password_title">Desktop backup password</string>
+
 </resources>
