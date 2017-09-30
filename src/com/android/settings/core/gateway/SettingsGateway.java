@@ -137,6 +137,7 @@ import com.citrus.settings.fragments.FlingSettings;
 import com.citrus.settings.fragments.NavigationBar;
 import com.citrus.settings.fragments.PulseSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
+import com.citrus.settings.fragments.QuickSettings;
 
 public class SettingsGateway {
 
@@ -263,7 +264,8 @@ public class SettingsGateway {
             NavigationBar.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
-            PulseSettings.class.getName()
+            PulseSettings.class.getName(),
+            QuickSettings.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
