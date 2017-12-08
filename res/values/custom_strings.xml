@@ -43,4 +43,8 @@
     <string name="night_bright_minimum">Minimum brightness</string>
     <string name="night_bright_low">Low brightness</string>
     <string name="night_bright_medium">Medium brightness</string>
+
+    <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>
