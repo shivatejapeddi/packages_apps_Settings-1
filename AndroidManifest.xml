@@ -88,6 +88,7 @@
     <uses-permission android:name="android.permission.MANAGE_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.ACCESS_IMS_CALL_SERVICE" />
     <uses-permission android:name="android.permission.DELETE_PACKAGES"/>
+    <uses-permission android:name="android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS" />
 
     <!-- DUI intent-->
     <!-- "intent_navbar_edit" is in frameworks/base manifest because we use it also for
