@@ -27,4 +27,9 @@
      
     <!-- About phone screen, Citrus-CAF device maintainer name -->
     <string name="device_maintainer">Maintainer</string>
+
+    <!-- About Citrus -->
+    <string name="aboutcitrus">About Citrus-CAF</string>
+    <string name="aboutcitrus_summary">Get to know about us!</string>
+
 </resources>

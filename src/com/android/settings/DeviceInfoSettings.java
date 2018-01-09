@@ -25,6 +25,7 @@ import android.provider.SearchIndexableResource;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.deviceinfo.AboutCitrusPreferenceController;
 import com.android.settings.deviceinfo.AdditionalSystemUpdatePreferenceController;
 import com.android.settings.deviceinfo.BasebandVersionPreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
@@ -135,6 +136,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         controllers.add(new CAFRevisionPreferenceController(context));
         controllers.add(new CitrusVersionPreferenceController(context));
         controllers.add(new DeviceMaintainerPreferenceController(context));
+        controllers.add(new AboutCitrusPreferenceController(context));        
         return controllers;
     }
 
