@@ -50,4 +50,9 @@
 
     <!--Screenshot shutter sound toggle -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
+
+    <!-- About Citrus -->
+    <string name="about_citrus_title">About Citrus-CAF</string>
+    <string name="about_citrus_summary">Get to know more about the project!</string>
+
 </resources>

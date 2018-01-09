@@ -37,6 +37,7 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.deviceinfo.BluetoothAddressPreferenceController;
 import com.android.settings.deviceinfo.BrandedAccountPreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
+import com.android.settings.deviceinfo.custom.AboutCitrusPreferenceController;
 import com.android.settings.deviceinfo.custom.BuildDatePreferenceController;
 import com.android.settings.deviceinfo.custom.CAFRevisionPreferenceController;
 import com.android.settings.deviceinfo.custom.CitrusVersionPreferenceController;
@@ -133,6 +134,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new CAFRevisionPreferenceController(context));
         controllers.add(new CitrusVersionPreferenceController(context));
         controllers.add(new BuildDatePreferenceController(context));
+        controllers.add(new AboutCitrusPreferenceController(context));
         controllers.add(
                 new BuildNumberPreferenceController(context, activity, fragment, lifecycle));
         return controllers;
