@@ -214,9 +214,15 @@ public class AppOpsState {
             new boolean[] { false }
             );
 
+    public static final OpsTemplate AUTO_START_TEMPLATE = new OpsTemplate(
+            new int[] { AppOpsManager.OP_AUTO_START },
+            new boolean[] { true, }
+            );
+
     public static final OpsTemplate[] ALL_TEMPLATES = new OpsTemplate[] {
             LOCATION_TEMPLATE, PERSONAL_TEMPLATE, MESSAGING_TEMPLATE,
-            MEDIA_TEMPLATE, DEVICE_TEMPLATE, RUN_IN_BACKGROUND_TEMPLATE
+            MEDIA_TEMPLATE, DEVICE_TEMPLATE, RUN_IN_BACKGROUND_TEMPLATE, 
+            AUTO_START_TEMPLATE
     };
 
     /**

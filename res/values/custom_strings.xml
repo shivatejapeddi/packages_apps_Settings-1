@@ -86,13 +86,13 @@
     <string name="app_ops_cat_messaging">Messaging</string>
     <string name="app_ops_cat_media">Media</string>
     <string name="app_ops_cat_device">Device</string>
+    <string name="app_ops_cat_autostart">Auto start</string>
 
     <!-- [CHAR LIMIT=NONE] App ops labels -->
     <string name="app_ops_access_camera">camera</string>
     <string name="app_ops_access_location">location</string>
     <string name="app_ops_access_notifications">notifications</string>
     <string name="app_ops_activate_vpn">VPN</string>
-    <string name="app_ops_auto_start">autostart</string>
     <string name="app_ops_delete_call_log">delete call log</string>
     <string name="app_ops_delete_contacts">delete contacts</string>
     <string name="app_ops_delete_mms">delete MMS</string>
@@ -154,6 +154,7 @@
     <string name="app_ops_picture_in_picture">pip</string>
     <string name="app_ops_app_start_foreground">start foreground</string>
     <string name="app_ops_answer_phone_calls">answer calls</string>
+    <string name="app_ops_auto_start">auto start</string>     
 
     <!-- Reset battery stats -->
     <string name="ok">Ok</string>

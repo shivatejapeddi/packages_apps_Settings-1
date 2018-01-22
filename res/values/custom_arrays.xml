@@ -40,6 +40,7 @@
         <item>@string/app_ops_cat_messaging</item>
         <item>@string/app_ops_cat_media</item>
         <item>@string/app_ops_cat_device</item>
+        <item>@string/app_ops_cat_autostart</item>
     </string-array>
 
     <!-- User display names for app ops codes -->
@@ -184,6 +185,7 @@
         <item>@string/app_ops_app_start_foreground</item>
         <!--OP_ANSWER_PHONE_CALLS -->
         <item>@string/app_ops_answer_phone_calls</item>	
+        <item>@string/app_ops_auto_start</item>
     </string-array>
 
 </resources>
