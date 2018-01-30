@@ -185,6 +185,11 @@
         <item>@string/app_ops_app_start_foreground</item>
         <!--OP_ANSWER_PHONE_CALLS -->
         <item>@string/app_ops_answer_phone_calls</item>	
+        <!--OP_CHANGR_WIFI_STATE -->
+        <item>@string/app_ops_change_wifi_state</item>	
+        <!--OP_BLUETOOTH_ADMIN -->
+        <item>@string/app_ops_bluetooth_admin</item>	
+        <!--OP_AUTO_START -->        
         <item>@string/app_ops_auto_start</item>
     </string-array>
 
