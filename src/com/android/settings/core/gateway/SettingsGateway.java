@@ -139,6 +139,7 @@ import com.citrus.settings.fragments.PulseSettings;
 import com.citrus.settings.fragments.SmartbarSettings;
 import com.citrus.settings.fragments.QuickSettings;
 import com.citrus.settings.fragments.NotificationStyleSettings;
+import com.citrus.settings.fragments.ExpandedDesktop;
 import com.android.settings.custom.DisplayRotation;
 
 public class SettingsGateway {
@@ -269,7 +270,8 @@ public class SettingsGateway {
             PulseSettings.class.getName(),
             QuickSettings.class.getName(),
             DisplayRotation.class.getName(),
-            NotificationStyleSettings.class.getName()
+            NotificationStyleSettings.class.getName(),
+            ExpandedDesktop.class.getName()            
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -311,6 +313,11 @@ public class SettingsGateway {
             Settings.NavigationSettingsActivity.class.getName(),
             Settings.FlingSettingsActivity.class.getName(),
             Settings.SmartbarSettingsActivity.class.getName(),
-            Settings.PulseSettingsActivity.class.getName()
+            Settings.PulseSettingsActivity.class.getName(),
+            Settings.QuickSettingsActivity.class.getName(),     
+            Settings.RotationSettingsActivity.class.getName(),      
+            Settings.NotificationStyleSettingsActivity.class.getName(),
+            Settings.OmniJawsSettingsActivity.class.getName(),       
+            Settings.ExpandedDesktopSettingsActivity.class.getName()               
     };
 }
