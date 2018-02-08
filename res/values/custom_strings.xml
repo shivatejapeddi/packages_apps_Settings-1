@@ -167,8 +167,6 @@
    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
-   <string name="wireless_charging_sounds_title">Wireless charging sounds</string>
-
     <!-- Manual provisioning support -->
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> is <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">disabled</string>
@@ -188,5 +186,4 @@
 
    <!--Build date-->
    <string name="build_date">Build date</string>
-
 </resources>

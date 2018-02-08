@@ -121,7 +121,7 @@
         <!-- Charging sounds -->
         <SwitchPreference
           android:key="charging_sounds"
-          android:title="@string/wireless_charging_sounds_title" />
+          android:title="@string/charging_sounds_title" />
 
         <!-- Docking sounds -->
         <SwitchPreference
