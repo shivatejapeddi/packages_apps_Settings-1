@@ -28,6 +28,7 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.deviceinfo.AboutCitrusPreferenceController;
 import com.android.settings.deviceinfo.AdditionalSystemUpdatePreferenceController;
 import com.android.settings.deviceinfo.BasebandVersionPreferenceController;
+import com.android.settings.deviceinfo.BuildDatePreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
 import com.android.settings.deviceinfo.CAFRevisionPreferenceController;
 import com.android.settings.deviceinfo.CitrusVersionPreferenceController;
@@ -136,7 +137,8 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         controllers.add(new CAFRevisionPreferenceController(context));
         controllers.add(new CitrusVersionPreferenceController(context));
         controllers.add(new DeviceMaintainerPreferenceController(context));
-        controllers.add(new AboutCitrusPreferenceController(context));        
+        controllers.add(new AboutCitrusPreferenceController(context));
+        controllers.add(new BuildDatePreferenceController(context));
         return controllers;
     }
 
