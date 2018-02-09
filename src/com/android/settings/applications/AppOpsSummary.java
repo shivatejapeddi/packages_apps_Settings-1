@@ -119,6 +119,9 @@ public class AppOpsSummary extends InstrumentedPreferenceFragment {
         // HACK - https://code.google.com/p/android/issues/detail?id=213359
         ((ViewPager.LayoutParams)tabs.getLayoutParams()).isDecor = true;
 
+        // Set actionbar elevation 0 to make tab and actionbar look uniform.
+        getActivity().getActionBar().setElevation(0);
+        
         Resources.Theme theme = tabs.getContext().getTheme();
         TypedValue typedValue = new TypedValue();
         theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
@@ -126,8 +129,13 @@ public class AppOpsSummary extends InstrumentedPreferenceFragment {
                 ? getContext().getColor(typedValue.resourceId)
                 : getContext().getColor(R.color.fingerprint_title_area_bg);
         tabs.setTabIndicatorColor(colorAccent);
+        tabs.setDrawFullUnderline(true);
 
-        // We have to do this now because PreferenceFrameLayout looks at it
+	    theme.resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
+	    final int colorPrimary = getContext().getColor(typedValue.resourceId);
+        tabs.setBackgroundColor(colorPrimary);
+
+	// We have to do this now because PreferenceFrameLayout looks at it
         // only when the view is added.
         if (container instanceof PreferenceFrameLayout) {
             ((PreferenceFrameLayout.LayoutParams) rootView.getLayoutParams()).removeBorders = true;
