@@ -88,6 +88,28 @@ import com.android.settings.wallpaper.WallpaperTypeSettings;
 import com.android.settings.wifi.ConfigureWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+
+import com.citrus.settings.CustomSquash;
+import com.citrus.settings.fragments.AmbientTicker;
+import com.citrus.settings.fragments.CarrierLabel;
+import com.citrus.settings.fragments.FlingSettings;
+import com.citrus.settings.fragments.HardwareKeys;
+import com.citrus.settings.fragments.LockScreenItems;
+import com.citrus.settings.fragments.NavigationBar;
+import com.citrus.settings.fragments.NotificationSettings;
+import com.citrus.settings.fragments.NotificationStyleSettings;
+import com.citrus.settings.fragments.PulseSettings;
+import com.citrus.settings.fragments.QuickSettings;
+import com.citrus.settings.fragments.SmartbarSettings;
+import com.citrus.settings.fragments.SuspendActions;
+import com.citrus.settings.fragments.led.BatteryLightSettings;
+import com.citrus.settings.fragments.led.NotificationLightSettings;
+import com.citrus.settings.tabs.Buttons;
+import com.citrus.settings.tabs.LockScreen;
+import com.citrus.settings.tabs.Misc;
+import com.citrus.settings.tabs.StatusBar;
+import com.citrus.settings.tabs.Ui;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -216,6 +238,28 @@ public final class SearchIndexableResources {
                 AutomaticStorageManagerSettings.class,
                 NO_DATA_RES_ID,
                 R.drawable.ic_settings_storage);
+ 
+        // CustomSquash 
+        addIndex(AmbientTicker.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(BatteryLightSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(Buttons.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(CarrierLabel.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(CustomSquash.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(FlingSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(HardwareKeys.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(LockScreen.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(LockScreenItems.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(Misc.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(NavigationBar.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(NotificationLightSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(NotificationSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(NotificationStyleSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(PulseSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(QuickSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(SmartbarSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(StatusBar.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(SuspendActions.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
+        addIndex(Ui.class, NO_DATA_RES_ID, R.drawable.ic_settings_customsquash);
     }
 
     private SearchIndexableResources() {
