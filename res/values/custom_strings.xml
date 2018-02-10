@@ -192,7 +192,7 @@
    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
 
    <!-- Face unlock -->
-   <string name="face_auto_unlock_title">Face auto unlock</string>
-   <string name="face_auto_unlock_summary">Dismiss lockscreen after face unlocking</string>
+   <string name="face_auto_unlock_title">Quick Face unlock</string>
+   <string name="face_auto_unlock_summary">Dismiss lockscreen automatically while using face unlock (NOTE: use at your own risk!)</string>
 
 </resources>
