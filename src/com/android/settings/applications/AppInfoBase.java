@@ -141,7 +141,7 @@ public abstract class AppInfoBase extends SettingsPreferenceFragment
         if (mPackageName == null) {
             Intent intent = (args == null) ?
                     getActivity().getIntent() : (Intent) args.getParcelable("intent");
-            if (intent != null) {
+            if (intent != null && intent.getData() != null) {
                 mPackageName = intent.getData().getSchemeSpecificPart();
             }
         }
@@ -186,7 +186,7 @@ public abstract class AppInfoBase extends SettingsPreferenceFragment
 
     @Override
     public void onRunningStateChanged(boolean running) {
-        // No op.
+        refreshUi();
     }
 
     @Override
@@ -221,7 +221,9 @@ public abstract class AppInfoBase extends SettingsPreferenceFragment
 
     @Override
     public void onPackageListChanged() {
-        refreshUi();
+        if (!refreshUi()) {
+            setIntentAndFinish(true, true);
+        }
     }
 
     public static void startAppInfoFragment(Class<?> fragment, int titleRes,
