@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2017 Cardinal-AOSP
+                   2016-2017 Projekt Substratum
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -24,7 +25,7 @@
     <!--Citrus-CAF Version-->
      <string name="citrus_version">Citrus-CAF Version</string>
      <string name="caf_revision">CAF Revision</string>
-     
+
     <!-- About phone screen, Citrus-CAF device maintainer name -->
     <string name="device_maintainer">Maintainer</string>
 
@@ -159,9 +160,9 @@
     <string name="app_ops_picture_in_picture">pip</string>
     <string name="app_ops_app_start_foreground">start foreground</string>
     <string name="app_ops_answer_phone_calls">answer calls</string>
-    <string name="app_ops_change_wifi_state">change wifi state</string>     
-    <string name="app_ops_bluetooth_admin">bluetooth admin</string>     
-    <string name="app_ops_auto_start">auto start</string>     
+    <string name="app_ops_change_wifi_state">change wifi state</string>
+    <string name="app_ops_bluetooth_admin">bluetooth admin</string>
+    <string name="app_ops_auto_start">auto start</string>
 
     <!-- Reset battery stats -->
     <string name="ok">Ok</string>
@@ -208,5 +209,14 @@
    <string name="security_settings_fingerprint_sensor_location_front">front</string>
    <string name="security_settings_fingerprint_sensor_location_left">left side</string>
    <string name="security_settings_fingerprint_sensor_location_right">right side</string>
+
+   <!-- Force authorize substratum packages -->
+   <string name="force_authorize_substratum_packages_title">Force authorize every theme app</string>
+   <string name="force_authorize_substratum_packages_summary">Allow theme apps from unknown sources</string>
+
+   <!-- Manage applications: show substratum overlays -->
+   <string name="filter_substratum_apps">Substratum overlays</string>
+   <string name="menu_show_substratum">Show overlays</string>
+   <string name="menu_hide_substratum">Hide overlays</string>
 
 </resources>
