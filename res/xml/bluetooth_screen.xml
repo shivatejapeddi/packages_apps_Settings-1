@@ -36,4 +36,11 @@
         settings:useAdminDisabledSummary="true"
         settings:controller="com.android.settings.connecteddevice.AddDevicePreferenceController"/>
 
+    <SwitchPreference
+        android:key="bluetooth_accept_all_files"
+        android:title="@string/bluetooth_accept_all_files"
+        android:summary="@string/bluetooth_accept_all_files_summary"
+        settings:allowDividerAbove="true"
+        settings:controller="com.android.settings.connecteddevice.BluetoothAcceptAllFilesPreferenceController" />
+
 </PreferenceScreen>

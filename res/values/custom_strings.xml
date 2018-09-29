@@ -32,11 +32,17 @@
 
     <!--Citrus-CAF Version-->
     <string name="citrus_version">Citrus-CAF Version</string>
-    
+
     <!--CAF Revision-->
     <string name="caf_revision">CAF Revision</string>
 
     <!-- CustomSquash -->
     <string name="citrus_settings_activity">Custom Squash!</string>
     <string name="citrus_settings_activity_summary">Additional Customizations</string>
+
+    <!-- Settings item title for accep all/any files over Bluetooth preference [CHAR LIMIT=35] -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+    <!-- Settings item summary for accep all/any files over Bluetooth preference [CHAR LIMIT=100] -->
+    <string name="bluetooth_accept_all_files_summary">Allow recieving all file types over bluetooth transfer</string>
+
 </resources>
