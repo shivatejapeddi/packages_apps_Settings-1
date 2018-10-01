@@ -45,7 +45,6 @@ import android.widget.TabWidget;
 import android.widget.Toast;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.CommandException;
-import com.android.internal.telephony.IccCardConstants.State;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
@@ -256,24 +255,12 @@ public class IccLockSettings extends SettingsPreferenceFragment
     }
 
     private void updatePreferences() {
-        boolean pinToggleState = false;
-        boolean pinDialogState = false;
-
-        if (mPhone != null) {
-            State cardState = mPhone.getIccCard().getState();
-            if (cardState == State.READY || cardState == State.LOADED) {
-                // if SIM State is NOT READY, it is not possible to interact with UICC app
-                // for enabling/disabling PIN so greyout PIN options.
-                pinToggleState = true;
-                pinDialogState = true;
-            }
-        }
-
         if (mPinDialog != null) {
-            mPinDialog.setEnabled(pinDialogState);
+            mPinDialog.setEnabled(mPhone != null);
         }
         if (mPinToggle != null) {
-            mPinToggle.setEnabled(pinToggleState);
+            mPinToggle.setEnabled(mPhone != null);
+
             if (mPhone != null) {
                 mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
             }
