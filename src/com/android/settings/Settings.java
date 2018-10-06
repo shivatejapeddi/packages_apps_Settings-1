@@ -169,4 +169,5 @@ public class Settings extends SettingsActivity {
     // Citrus-CAF Additions
     public static class CustomSquashActivity extends SettingsActivity {}
     public static class OmniJawsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class QuickSettingsActivity extends SettingsActivity { /* empty */ }
 }
