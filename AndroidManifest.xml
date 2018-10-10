@@ -3359,11 +3359,34 @@
                        android:resource="@string/citrus_settings_activity_summary"/>
         </activity>
 
+         <!-- Expanded desktop settings activity. -->
+        <activity android:name="Settings$ExpandedDesktopSettingsActivity"
+                 android:label="@string/expanded_desktop_category"
+                 android:excludeFromRecents="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.fragments.ExpandedDesktop" />
+         </activity>
+
+        <!-- Navigation bar settings activity. -->
+        <activity android:name=".Settings$NavigationBarSettingsActivity"
+                android:label="@string/navigationbar_settings_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.citrus.settings.fragments.NavigationBar" />
+        </activity>
+
         <!-- Omnijaws -->
         <activity android:name="Settings$OmniJawsSettingsActivity"
                   android:label="@string/weather_title"
-                  android:taskAffinity="com.android.settings"
-                  android:parentActivityName="Settings" >
+                  android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -3375,8 +3398,7 @@
         <!-- QuickSettings activity. -->
         <activity android:name=".Settings$QuickSettingsActivity"
                 android:label="@string/quicksettings_category"
-                  android:taskAffinity="com.android.settings"
-                  android:parentActivityName="Settings" >
+                android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

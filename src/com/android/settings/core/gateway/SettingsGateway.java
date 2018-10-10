@@ -138,6 +138,8 @@ import com.android.settings.wifi.calling.WifiCallingSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 
 import com.citrus.settings.CustomSquash;
+import com.citrus.settings.fragments.ExpandedDesktop;
+import com.citrus.settings.fragments.NavigationBar;
 import com.citrus.settings.fragments.QuickSettings;
 
 public class SettingsGateway {
@@ -265,7 +267,9 @@ public class SettingsGateway {
             ToggleBackupSettingFragment.class.getName(),
             PreviouslyConnectedDeviceDashboardFragment.class.getName(),
             CustomSquash.class.getName(),
-            QuickSettings.class.getName()
+            QuickSettings.class.getName(),
+            ExpandedDesktop.class.getName(),
+            NavigationBar.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
